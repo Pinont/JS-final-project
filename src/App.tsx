@@ -377,7 +377,7 @@ function HeroSection() {
               {/* Mini stats row */}
               <div
                 className="grid grid-cols-3 divide-x"
-                style={{ borderTop: '1px solid #1e2230', divideColor: '#1e2230' }}
+                style={{ borderTop: '1px solid #1e2230' }}
               >
                 {[
                   { k: 'Secrets', v: '1,247' },
@@ -765,73 +765,76 @@ function CTASection() {
 }
 
 function Footer() {
-  const cols = [
-    { title: 'Product', links: ['Secrets Management', 'Certificate Management', 'PAM', 'Agent Proxy', 'Changelog'] },
-    { title: 'Solutions', links: ['DevOps Teams', 'Enterprise', 'AI Agents', 'Compliance', 'Startups'] },
-    { title: 'Developers', links: ['Documentation', 'API Reference', 'CLI Reference', 'SDKs', 'Status'] },
-    { title: 'Company', links: ['About', 'Blog', 'Careers', 'Security', 'Privacy'] },
-  ]
-
   return (
     <footer style={{ borderTop: '1px solid #1e2230', background: '#09090e' }}>
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-16">
-          {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-10">
+          <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded flex items-center justify-center font-mono font-bold text-xs"
-                style={{ background: '#a8ff3e', color: '#09090e' }}>
+              <div
+                className="w-7 h-7 rounded flex items-center justify-center font-mono font-bold text-xs"
+                style={{ background: '#a8ff3e', color: '#09090e' }}
+              >
                 IN
               </div>
-              <span className="font-display font-semibold text-white">infisical</span>
+              <span className="font-display font-semibold text-white">Brick</span>
             </div>
-            <p className="text-xs leading-relaxed mb-4" style={{ color: '#374151' }}>
-              Open-source security infrastructure for modern development teams.
+            <p className="text-xs leading-relaxed" style={{ color: '#374151' }}>
+              Security infrastructure for modern teams.
             </p>
-            <div className="flex gap-3">
-              {['GitHub', 'Twitter', 'Discord', 'LinkedIn'].map((s) => (
-                <button key={s} className="text-xs font-mono transition-colors" style={{ color: '#374151' }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = '#a8ff3e')}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
-                >
-                  {s[0]}
-                </button>
-              ))}
-            </div>
           </div>
 
-          {/* Link columns */}
-          {cols.map(({ title, links }) => (
-            <div key={title}>
-              <div className="font-mono text-xs font-semibold mb-4" style={{ color: '#4b5563' }}>{title}</div>
-              <ul className="space-y-2.5">
-                {links.map((l) => (
-                  <li key={l}>
-                    <a href="#" className="text-xs transition-colors" style={{ color: '#374151' }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#9ca3af')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
-                    >
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <div className="font-mono text-xs font-semibold mb-4" style={{ color: '#4b5563' }}>Product</div>
+            <ul className="space-y-2.5">
+              {['Secrets Management', 'Certificate Management', 'Agent Proxy'].map((l) => (
+                <li key={l}>
+                  <a href="#" className="text-xs transition-colors" style={{ color: '#374151' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#9ca3af')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
+                  >
+                    {l}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="font-mono text-xs font-semibold mb-4" style={{ color: '#4b5563' }}>Our Team</div>
+            <ul className="space-y-2.5">
+              {['About', 'Careers', 'Security'].map((l) => (
+                <li key={l}>
+                  <a href="#" className="text-xs transition-colors" style={{ color: '#374151' }}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = '#9ca3af')}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
+                  >
+                    {l}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-8" style={{ borderTop: '1px solid #1e2230' }}>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6" style={{ borderTop: '1px solid #1e2230' }}>
           <p className="font-mono text-xs" style={{ color: '#374151' }}>
-            © 2024 Infisical, Inc. All rights reserved.
+            © 2024 Brick, Inc. All rights reserved.
           </p>
-          <div className="flex gap-6 mt-4 md:mt-0">
-            {['Terms', 'Privacy', 'Security', 'Cookies'].map((t) => (
-              <a key={t} href="#" className="font-mono text-xs transition-colors" style={{ color: '#374151' }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#9ca3af')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
-              >
-                {t}
-              </a>
+          <div className="flex items-center gap-3 flex-wrap justify-center md:justify-end">
+            {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map((t, i) => (
+              <div key={t} className="flex items-center gap-3">
+                <a
+                  href="#"
+                  className="font-mono text-xs transition-colors"
+                  style={{ color: '#374151' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = '#9ca3af')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = '#374151')}
+                >
+                  {t}
+                </a>
+                {i < 2 && <span className="font-mono text-xs" style={{ color: '#374151' }}>•</span>}
+              </div>
             ))}
           </div>
         </div>
