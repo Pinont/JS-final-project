@@ -1240,50 +1240,89 @@ function CTASection() {
             "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(168,255,62,0.07) 0%, rgba(185,79,255,0.04) 50%, transparent 70%)",
         }}
       />
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <h2
-          className="font-display font-bold mb-6"
-          style={{
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
-            color: "#f0f2f5",
-            letterSpacing: "-0.03em",
-          }}
-        >
-          Ship with confidence.
-          <br />
-          <span style={{ color: "#a8ff3e" }}>Secure by default.</span>
-        </h2>
-        <p className="text-lg mb-10" style={{ color: "#4b5563" }}>
-          Join 100,000+ engineers who manage their secrets, certificates, and
-          access with Infisical. Free to start. Built to scale.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            className="px-8 py-4 rounded-lg font-semibold text-base transition-all"
-            style={{ background: "#a8ff3e", color: "#09090e" }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#bfff5c")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#a8ff3e")}
-          >
-            Get started — it's free
-          </button>
-          <button
-            className="px-8 py-4 rounded-lg font-semibold text-base transition-all"
-            style={{ color: "#9ca3af", border: "1px solid #1e2230" }}
-            onMouseEnter={(e) => {
-              ;(e.currentTarget as HTMLElement).style.borderColor = "#a8ff3e40"
-              ;(e.currentTarget as HTMLElement).style.color = "#f0f2f5"
-            }}
-            onMouseLeave={(e) => {
-              ;(e.currentTarget as HTMLElement).style.borderColor = "#1e2230"
-              ;(e.currentTarget as HTMLElement).style.color = "#9ca3af"
-            }}
-          >
-            Talk to sales
-          </button>
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+          <div className="text-center lg:text-left">
+            <h2
+              className="font-display font-bold mb-6"
+              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#f0f2f5', letterSpacing: '-0.03em' }}
+            >
+              Ship with confidence.<br />
+              <span style={{ color: '#a8ff3e' }}>Secure by default.</span>
+            </h2>
+            <p className="text-lg mb-10" style={{ color: '#4b5563' }}>
+              Join 100,000+ engineers who manage their secrets, certificates, and access with brick. Free to start. Built to scale.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a
+                href="#contact-links"
+                className="px-8 py-4 rounded-lg font-semibold text-base transition-all"
+                style={{ background: '#a8ff3e', color: '#09090e' }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = '#bfff5c')}
+                onMouseLeave={(e) => (e.currentTarget.style.background = '#a8ff3e')}
+              >
+                Get started — it's free
+              </a>
+            </div>
+          </div>
+
+          <div id="contact-links" className="rounded-2xl p-6 sm:p-8" style={{ background: '#0f1117', border: '1px solid #1e2230' }}>
+            <div className="font-mono text-xs mb-3" style={{ color: '#a8ff3e' }}>CONTACT</div>
+            <h3 className="font-display font-semibold text-2xl mb-3" style={{ color: '#f0f2f5', letterSpacing: '-0.02em' }}>
+              Talk to the right team.
+            </h3>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: '#6b7280' }}>
+              Reach sales for a demo, support for technical questions, or the team for partnership and enterprise requests.
+            </p>
+            <div className="space-y-3">
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=sales@brick.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between px-4 py-3 rounded-lg transition-all"
+                style={{ background: '#080a0f', border: '1px solid #1e2230', color: '#e8eaf0' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#a8ff3e40'; (e.currentTarget as HTMLElement).style.background = '#0b0d14' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e2230'; (e.currentTarget as HTMLElement).style.background = '#080a0f' }}
+              >
+                <span>
+                  <span className="font-mono text-xs block" style={{ color: '#9ca3af' }}>Sales</span>
+                  <span className="text-sm">sales@brick.com</span>
+                </span>
+                <span className="font-mono text-xs" style={{ color: '#a8ff3e' }}>↗</span>
+              </a>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=support@brick.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between px-4 py-3 rounded-lg transition-all"
+                style={{ background: '#080a0f', border: '1px solid #1e2230', color: '#e8eaf0' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#a8ff3e40'; (e.currentTarget as HTMLElement).style.background = '#0b0d14' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e2230'; (e.currentTarget as HTMLElement).style.background = '#080a0f' }}
+              >
+                <span>
+                  <span className="font-mono text-xs block" style={{ color: '#9ca3af' }}>Support</span>
+                  <span className="text-sm">support@brick.com</span>
+                </span>
+                <span className="font-mono text-xs" style={{ color: '#a8ff3e' }}>↗</span>
+              </a>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@brick.com"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-between px-4 py-3 rounded-lg transition-all"
+                style={{ background: '#080a0f', border: '1px solid #1e2230', color: '#e8eaf0' }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#a8ff3e40'; (e.currentTarget as HTMLElement).style.background = '#0b0d14' }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e2230'; (e.currentTarget as HTMLElement).style.background = '#080a0f' }}
+              >
+                <span>
+                  <span className="font-mono text-xs block" style={{ color: '#9ca3af' }}>General</span>
+                  <span className="text-sm">hello@brick.com</span>
+                </span>
+                <span className="font-mono text-xs" style={{ color: '#a8ff3e' }}>↗</span>
+              </a>
+            </div>
+          </div>
         </div>
-        <p className="mt-6 font-mono text-xs" style={{ color: "#374151" }}>
-          Self-hostable · SOC2 Type II · No CC required to start
-        </p>
       </div>
     </section>
   )
