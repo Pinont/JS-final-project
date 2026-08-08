@@ -11,3 +11,5 @@ logs/
 *.log
 .claude-replay.*
 .tmp-*
+TODO/*
+HANDOFF.md
