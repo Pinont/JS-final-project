@@ -61,8 +61,8 @@ export default function FrontendPortfolio({
       case "contact":
         output = [
           "Contact Channels:",
-          "  Email:    dev.thanatphong@brick-team.io",
-          "  GitHub:   github.com/thanatphong-dev",
+          "  Email:    thanatphong2719@gmail.com",
+          "  GitHub:   github.com/WinTuner",
           "  LinkedIn: linkedin.com/in/thanatphong-tharin",
         ]
         break
@@ -221,7 +221,7 @@ export default function FrontendPortfolio({
                   CONTACT:
                 </div>
                 <div className="text-white font-mono">
-                  dev.thanatphong@brick-team.io
+                  thanatphong2719@gmail.com
                 </div>
               </div>
             </div>

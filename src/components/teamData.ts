@@ -30,8 +30,8 @@ export const TEAM_MEMBERS: TeamMember[] = [
     nameEn: "Thanatphong Tharin",
     role: "Frontend Developer (Frontend)",
     bio: "Building blazing-fast, secure, and highly responsive user interfaces using React 19, Vite, and Tailwind CSS v4.",
-    email: "dev.thanatphong@brick-team.io",
-    github: "thanatphong-dev",
+    email: "thanatphong2719@gmail.com",
+    github: "WinTuner",
     linkedin: "thanatphong-tharin",
     accentColor: "#a8ff3e", // Lime Green
     initials: "TT",
