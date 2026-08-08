@@ -44,7 +44,7 @@ export default function FrontendPortfolio({
       case "projects":
         output = [
           "Featured Projects:",
-          "  1. Infisical CLI Dashboard - Ephemeral secret manager",
+          "  1. Brick CLI Dashboard - Ephemeral secret manager",
           "  2. Secure PKI Portal - Automatic SSL certificate issuance",
           "  3. Real-time Log Auditor - SOC 2 compliant session replayer",
         ]
@@ -61,7 +61,7 @@ export default function FrontendPortfolio({
       case "contact":
         output = [
           "Contact Channels:",
-          "  Email:    dev.thanatphong@infisical-team.io",
+          "  Email:    dev.thanatphong@brick-team.io",
           "  GitHub:   github.com/thanatphong-dev",
           "  LinkedIn: linkedin.com/in/thanatphong-tharin",
         ]
@@ -221,7 +221,7 @@ export default function FrontendPortfolio({
                   CONTACT:
                 </div>
                 <div className="text-white font-mono">
-                  dev.thanatphong@infisical-team.io
+                  dev.thanatphong@brick-team.io
                 </div>
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function FrontendPortfolio({
                   style={{ background: "#28c840" }}
                 />
                 <span className="ml-3 font-mono text-xs text-[#4b5563]">
-                  thanatphong@infisical-terminal: ~
+                  thanatphong@brick-terminal: ~
                 </span>
               </div>
               <span className="font-mono text-[10px] text-[#4b5563]">

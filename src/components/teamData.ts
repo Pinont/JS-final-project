@@ -18,7 +18,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     nameEn: "Nonniphat Tangrojanakhajorn",
     role: "Project Manager (PM)",
     bio: "Steering product vision, orchestrating agile workflows, and ensuring seamless collaboration across engineering teams.",
-    email: "pm.nonniphat@infisical-team.io",
+    email: "pm.nonniphat@brick-team.io",
     github: "nonniphat-pm",
     linkedin: "nonniphat-tang",
     accentColor: "#b94fff", // Purple
@@ -30,7 +30,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     nameEn: "Thanatphong Tharin",
     role: "Frontend Developer (Frontend)",
     bio: "Building blazing-fast, secure, and highly responsive user interfaces using React 19, Vite, and Tailwind CSS v4.",
-    email: "dev.thanatphong@infisical-team.io",
+    email: "dev.thanatphong@brick-team.io",
     github: "thanatphong-dev",
     linkedin: "thanatphong-tharin",
     accentColor: "#a8ff3e", // Lime Green
@@ -42,7 +42,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     nameEn: "Phuriwat Supakkanok",
     role: "UX/UI Designer (UX/UI)",
     bio: "Crafting intuitive, accessible, and high-fidelity design systems and user experiences for complex security workflows.",
-    email: "design.phuriwat@infisical-team.io",
+    email: "design.phuriwat@brick-team.io",
     github: "phuriwat-ux",
     linkedin: "phuriwat-supakkanok",
     accentColor: "#00d4ff", // Cyan

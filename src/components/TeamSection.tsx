@@ -66,7 +66,7 @@ export default function TeamSection({
               <div>
                 <span className="text-[#6b7280]">Project Name:</span>{" "}
                 <span className="text-white">
-                  Infisical Security Landing Suite
+                  Brick Security Landing Suite
                 </span>
               </div>
               <div>
@@ -77,7 +77,7 @@ export default function TeamSection({
               </div>
               <div>
                 <span className="text-[#6b7280]">Team Email:</span>{" "}
-                <span className="text-white">hello@infisical-team.io</span>
+                <span className="text-white">hello@brick-team.io</span>
               </div>
               <div>
                 <span className="text-[#6b7280]">Division:</span>{" "}
