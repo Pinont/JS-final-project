@@ -24,6 +24,7 @@ export default function FrontendPortfolio({
           "  skills   - List technical skills and proficiency",
           "  projects - List developed web projects",
           "  secret   - Decrypt secure environment variables",
+          "  cv       - Open my official CV / portfolio website",
           "  contact  - Show direct developer contact channels",
           "  clear    - Clear terminal screen",
         ]
@@ -58,11 +59,19 @@ export default function FrontendPortfolio({
           "✓ Session verified. Audit logs recorded.",
         ]
         break
+      case "cv":
+        output = [
+          "📄 Opening CV / Portfolio website in a new tab...",
+          "  URL: https://thanatphong.vercel.app/",
+          "✓ Executed successfully.",
+        ]
+        window.open("https://thanatphong.vercel.app/", "_blank")
+        break
       case "contact":
         output = [
           "Contact Channels:",
-          "  Email:    dev.thanatphong@brick-team.io",
-          "  GitHub:   github.com/thanatphong-dev",
+          "  Email:    thanatphong2719@gmail.com",
+          "  GitHub:   github.com/WinTuner",
           "  LinkedIn: linkedin.com/in/thanatphong-tharin",
         ]
         break
@@ -172,7 +181,7 @@ export default function FrontendPortfolio({
               ธณัฐพงค์ ทะรินทร์
             </div>
             <span
-              className="inline-block font-mono text-xs px-3 py-1 rounded-full mb-6 font-semibold"
+              className="inline-block font-mono text-xs px-3 py-1 rounded-full mb-4 font-semibold"
               style={{
                 background: "rgba(168,255,62,0.12)",
                 color: "#a8ff3e",
@@ -181,6 +190,30 @@ export default function FrontendPortfolio({
             >
               Frontend Developer (Frontend)
             </span>
+
+            <a
+              href="https://thanatphong.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2.5 rounded-lg font-semibold text-xs transition-all cursor-pointer flex items-center gap-2"
+              style={{
+                background: "rgba(168, 255, 62, 0.1)",
+                color: "#a8ff3e",
+                border: "1px solid rgba(168, 255, 62, 0.2)",
+              }}
+              onMouseEnter={(e) => {
+                ;(e.currentTarget as HTMLElement).style.background = "#a8ff3e"
+                ;(e.currentTarget as HTMLElement).style.color = "#09090e"
+                ;(e.currentTarget as HTMLElement).style.borderColor = "#a8ff3e"
+              }}
+              onMouseLeave={(e) => {
+                ;(e.currentTarget as HTMLElement).style.background = "rgba(168, 255, 62, 0.1)"
+                ;(e.currentTarget as HTMLElement).style.color = "#a8ff3e"
+                ;(e.currentTarget as HTMLElement).style.borderColor = "rgba(168, 255, 62, 0.2)"
+              }}
+            >
+              📄 Open Real CV / Portfolio
+            </a>
           </div>
 
           <div
@@ -221,7 +254,7 @@ export default function FrontendPortfolio({
                   CONTACT:
                 </div>
                 <div className="text-white font-mono">
-                  dev.thanatphong@brick-team.io
+                  thanatphong2719@gmail.com
                 </div>
               </div>
             </div>
@@ -325,6 +358,7 @@ export default function FrontendPortfolio({
                   "skills",
                   "projects",
                   "secret",
+                  "cv",
                   "contact",
                   "clear",
                 ].map((preset) => (
