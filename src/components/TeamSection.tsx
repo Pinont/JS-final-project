@@ -242,62 +242,17 @@ export default function TeamSection({
                       </svg>
                     )}
                     {m.id === "uxui" && (
-                      <svg
-                        width="80"
-                        height="80"
-                        viewBox="0 0 100 100"
-                        className="w-20 h-20 transition-transform duration-500 group-hover:scale-110"
-                      >
-                        <defs>
-                          <radialGradient
-                            id="ux-glow"
-                            cx="50%"
-                            cy="50%"
-                            r="50%"
-                          >
-                            <stop
-                              offset="0%"
-                              stopColor="#00d4ff"
-                              stopOpacity="0.35"
-                            />
-                            <stop
-                              offset="100%"
-                              stopColor="#09090e"
-                              stopOpacity="0"
-                            />
-                          </radialGradient>
-                        </defs>
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="45"
-                          fill="url(#ux-glow)"
-                          stroke="#00d4ff"
-                          strokeWidth="1.5"
+                      <div className="w-full h-full rounded-full overflow-hidden border border-[#00d4ff]/30 shadow-md">
+                        <img
+                          src="/ProfilePhooriwat.jpg"
+                          alt="Phooriwat Suphakkanok"
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.45]"
+                          style={{
+                            transform: "scale(1.3)",
+                            transformOrigin: "65% 20%",
+                          }}
                         />
-                        <rect
-                          x="35"
-                          y="35"
-                          width="30"
-                          height="30"
-                          rx="3"
-                          stroke="#00d4ff"
-                          strokeWidth="2"
-                          fill="none"
-                          opacity="0.8"
-                        />
-                        <circle
-                          cx="50"
-                          cy="50"
-                          r="18"
-                          stroke="#00d4ff"
-                          strokeWidth="1.5"
-                          fill="none"
-                          opacity="0.6"
-                          style={{ strokeDasharray: "2 2" }}
-                        />
-                        <circle cx="50" cy="50" r="3.5" fill="#00d4ff" />
-                      </svg>
+                      </div>
                     )}
                   </div>
 
@@ -305,9 +260,11 @@ export default function TeamSection({
                   <h3 className="font-display font-bold text-xl text-white mb-0.5 transition-colors">
                     {m.nameEn}
                   </h3>
-                  <div className="font-display text-sm text-[#9ca3af] mb-2 font-medium">
-                    {m.nameTh}
-                  </div>
+                  {m.nameTh && (
+                    <div className="font-display text-sm text-[#9ca3af] mb-2 font-medium">
+                      {m.nameTh}
+                    </div>
+                  )}
 
                   {/* Position Badge */}
                   <div
@@ -332,7 +289,9 @@ export default function TeamSection({
                   {/* Contact channels */}
                   <div className="flex justify-center gap-4 mb-6 border-t border-[#1e2230]/50 pt-5">
                     <a
-                      href={`mailto:${m.email}`}
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${m.email}`}
+                      target="_blank"
+                      rel="noreferrer"
                       className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
                       title={m.email}
                     >

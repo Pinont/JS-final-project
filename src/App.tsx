@@ -210,7 +210,7 @@ const COMPLIANCE = [
 
 // ─── Components ──────────────────────────────────────────────────────────────
 
-function NavBar({ view, setView }: { view: string setView: (v: any) => void }) {
+function NavBar({ view, setView }: { view: string; setView: (v: any) => void }) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
@@ -695,7 +695,6 @@ function HeroSection() {
                 className="grid grid-cols-3 divide-x"
                 style={{
                   borderTop: "1px solid #1e2230",
-                  divideColor: "#1e2230",
                 }}
               >
                 {[
