@@ -5,6 +5,7 @@ import PMPortfolio from "./components/PMPortfolio"
 import FrontendPortfolio from "./components/FrontendPortfolio"
 import UXUIPortfolio from "./components/UXUIPortfolio"
 import Achievements from "./components/Achievements"
+import DesignSystem from "./DesignSystem"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -64,7 +65,7 @@ const FEATURES = [
       "Native sync to AWS, GCP, Azure, Vercel",
       "Secret versioning and rollback",
     ],
-    terminal: `$ infisical secrets get DB_PASSWORD
+    terminal: `$ brick secrets get DB_PASSWORD
 ╔══════════════╦══════════════════════════════╗
 ║ Key          ║ Value                        ║
 ╠══════════════╬══════════════════════════════╣
@@ -85,7 +86,7 @@ const FEATURES = [
       "Multi-cloud PKI discovery",
       "CRL and OCSP stapling",
     ],
-    terminal: `$ infisical pki list --expiring-soon
+    terminal: `$ brick pki list --expiring-soon
   DOMAIN                  DAYS   STATUS
   api.acme.com             12   ⚠ EXPIRING
   dashboard.acme.com       45   ✓ VALID
@@ -106,7 +107,7 @@ const FEATURES = [
       "Command-level audit logs",
       "Break-glass emergency access",
     ],
-    terminal: `$ infisical access request prod-db-1
+    terminal: `$ brick access request prod-db-1
   Requesting JIT access to prod-db-1
   Reason: Investigate slow query #4821
   Duration: 1 hour
@@ -128,7 +129,7 @@ const FEATURES = [
       "Full agent audit trail",
     ],
     terminal: `// Agent requests a secret via proxy
-const secret = await infisical.agent.get({
+const secret = await brick.agent.get({
   key: "OPENAI_API_KEY",
   session: agentSession.id,
   scope: "inference-only",
@@ -164,7 +165,7 @@ const INTEGRATIONS = [
 const TESTIMONIALS = [
   {
     quote:
-      "Infisical replaced a patchwork of .env files, SSM parameters, and a legacy Vault cluster. Setup took one afternoon. Our engineers actually love the CLI.",
+      "Brick replaced a patchwork of .env files, SSM parameters, and a legacy Vault cluster. Setup took one afternoon. Our engineers actually love the CLI.",
     author: "Marcus Chen",
     role: "Staff Engineer",
     company: "Cloudflare",
@@ -180,7 +181,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "Certificate expiry used to be a quarterly fire drill. Infisical's PKI automation removed that entirely. We haven't had a cert-related incident in 8 months.",
+      "Certificate expiry used to be a quarterly fire drill. Brick's PKI automation removed that entirely. We haven't had a cert-related incident in 8 months.",
     author: "Lars Eriksson",
     role: "DevOps Lead",
     company: "Linear",
@@ -260,10 +261,10 @@ function NavBar({ view, setView }: { view: string setView: (v: any) => void }) {
             className="w-8 h-8 rounded flex items-center justify-center font-mono font-bold text-sm"
             style={{ background: "#a8ff3e", color: "#09090e" }}
           >
-            IN
+            BR
           </div>
           <span className="font-display font-semibold text-white text-lg tracking-tight">
-            infisical
+            brick
           </span>
         </div>
 
@@ -467,7 +468,7 @@ function NavBar({ view, setView }: { view: string setView: (v: any) => void }) {
 }
 
 const HERO_LINES = [
-  "$ infisical run -- node server.js",
+  "$ brick run -- node server.js",
   "✓ Injecting 12 secrets into environment",
   "✓ Agent proxy session initialized",
   "✓ Audit log entry created",
@@ -658,7 +659,7 @@ function HeroSection() {
                   className="ml-3 font-mono text-xs"
                   style={{ color: "#4b5563" }}
                 >
-                  infisical — production
+                  brick — production
                 </span>
               </div>
               <div className="p-5 font-mono text-sm min-h-[220px]">
@@ -798,7 +799,7 @@ function FeaturesSection() {
           Everything security. One platform.
         </h2>
         <p className="text-lg max-w-2xl mx-auto" style={{ color: "#4b5563" }}>
-          From developer secrets to agent credentials to PKI — Infisical gives
+          From developer secrets to agent credentials to PKI — Brick gives
           every team a unified, auditable control plane.
         </p>
       </div>
@@ -979,7 +980,7 @@ function AgentProxySection() {
             >
               Traditional secret injection breaks in agentic workflows —
               credentials leak into prompts, logs, and model context.
-              Infisical's agent proxy routes every access request through an
+              Brick's agent proxy routes every access request through an
               ephemeral token that expires with the session.
             </p>
             <div className="space-y-2">
@@ -1471,7 +1472,7 @@ function Footer({ view, setView }: { view: string; setView: (v: any) => void }) 
 
 export default function App() {
   const [view, setView] =
-    useState<"home" | "team" | "portfolio-pm" | "portfolio-frontend" | "portfolio-uxui">(
+    useState<"home" | "team" | "portfolio-pm" | "portfolio-frontend" | "portfolio-uxui" | "design-system">(
       "home",
     )
 
@@ -1517,7 +1518,44 @@ export default function App() {
 
       {view === "portfolio-uxui" && <UXUIPortfolio setView={setView} />}
 
+      {view === "design-system" && <DesignSystem setView={setView} />}
+
       <Footer view={view} setView={setView} />
+
+      {/* Floating View Switcher Pill */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button
+          onClick={() => setView(view === "design-system" ? "home" : "design-system")}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-full font-semibold text-xs transition-all shadow-lg hover:scale-105 cursor-pointer backdrop-blur-md"
+          style={{
+            background: view === "design-system" ? "rgba(168,255,62,0.15)" : "rgba(15,17,23,0.8)",
+            color: view === "design-system" ? "#a8ff3e" : "#f0f2f5",
+            border: view === "design-system" ? "1px solid rgba(168,255,62,0.3)" : "1px solid #1e2230",
+          }}
+          onMouseEnter={(e) => {
+            if (view !== "design-system") {
+              ;(e.currentTarget as HTMLElement).style.borderColor = "#a8ff3e40"
+              ;(e.currentTarget as HTMLElement).style.color = "#a8ff3e"
+            }
+          }}
+          onMouseLeave={(e) => {
+            if (view !== "design-system") {
+              ;(e.currentTarget as HTMLElement).style.borderColor = "#1e2230"
+              ;(e.currentTarget as HTMLElement).style.color = "#f0f2f5"
+            }
+          }}
+        >
+          {view === "design-system" ? (
+            <>
+              <span>🚀 Landing Page</span>
+            </>
+          ) : (
+            <>
+              <span>📐 Design System</span>
+            </>
+          )}
+        </button>
+      </div>
     </div>
   )
 }
