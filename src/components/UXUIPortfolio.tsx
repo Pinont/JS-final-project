@@ -15,7 +15,7 @@ export default function UXUIPortfolio({
   const themeColors = {
     lime: {
       primary: "#a8ff3e",
-      text: "Infisical Lime",
+      text: "Brick Lime",
       glow: "rgba(168,255,62,0.4)",
       bg: "rgba(168,255,62,0.04)",
     },
@@ -181,7 +181,7 @@ export default function UXUIPortfolio({
                   CONTACT:
                 </div>
                 <div className="text-white font-mono">
-                  design.phuriwat@infisical-team.io
+                  design.phuriwat@brick-team.io
                 </div>
               </div>
             </div>
