@@ -232,7 +232,7 @@ export default function PMPortfolio({
                 <div className="text-[#6b7280] font-mono text-xs font-semibold">
                   CONTACT:
                 </div>
-                <div className="text-white">pm.nonniphat@infisical-team.io</div>
+                <div className="text-white">pm.nonniphat@brick-team.io</div>
               </div>
             </div>
           </div>
