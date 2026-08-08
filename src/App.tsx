@@ -4,6 +4,7 @@ import TeamSection from "./components/TeamSection"
 import PMPortfolio from "./components/PMPortfolio"
 import FrontendPortfolio from "./components/FrontendPortfolio"
 import UXUIPortfolio from "./components/UXUIPortfolio"
+import Achievements from "./components/Achievements"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -1488,6 +1489,7 @@ export default function App() {
             <HeroSection />
           </div>
           <StatsSection />
+          <Achievements />
           <div id="features">
             <FeaturesSection />
           </div>
