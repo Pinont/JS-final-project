@@ -255,63 +255,112 @@ function NavBar({ view, setView }: { view: string setView: (v: any) => void }) {
           className="flex items-center gap-3 cursor-pointer"
           onClick={handleLogoClick}
         >
-          <div
-            className="w-8 h-8 rounded flex items-center justify-center font-mono font-bold text-sm"
-            style={{ background: "#a8ff3e", color: "#09090e" }}
+          <svg
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+            className="flex-shrink-0"
+            aria-label="Brick logo"
           >
-            IN
-          </div>
+            <rect x="2" y="2" width="28" height="28" rx="3" fill="#a8ff3e" />
+            {/* Horizontal mortar lines */}
+            <line
+              x1="2"
+              y1="12"
+              x2="30"
+              y2="12"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            <line
+              x1="2"
+              y1="22"
+              x2="30"
+              y2="22"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            {/* Vertical mortar lines (running bond — offset per row) */}
+            <line
+              x1="12"
+              y1="2"
+              x2="12"
+              y2="12"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            <line
+              x1="22"
+              y1="2"
+              x2="22"
+              y2="12"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            <line
+              x1="7"
+              y1="12"
+              x2="7"
+              y2="22"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            <line
+              x1="17"
+              y1="12"
+              x2="17"
+              y2="22"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            <line
+              x1="27"
+              y1="12"
+              x2="27"
+              y2="22"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            <line
+              x1="12"
+              y1="22"
+              x2="12"
+              y2="30"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+            <line
+              x1="22"
+              y1="22"
+              x2="22"
+              y2="30"
+              stroke="#09090e"
+              strokeWidth="2"
+            />
+          </svg>
           <span className="font-display font-semibold text-white text-lg tracking-tight">
-            infisical
+            Brick
           </span>
         </div>
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-1">
           <button
-            onClick={() => handleNavClick("features")}
+            onClick={() => setView("home")}
             className="px-4 py-2 text-sm font-medium cursor-pointer transition-colors rounded"
-            style={{ color: view === "home" ? "#9ca3af" : "#6b7280" }}
+            style={{
+              color: view === "home" ? "#a8ff3e" : "#9ca3af",
+            }}
             onMouseEnter={(e) => {
-              if (view === "home")
+              if (view !== "home")
                 (e.currentTarget as HTMLElement).style.color = "#a8ff3e"
             }}
             onMouseLeave={(e) => {
-              if (view === "home")
+              if (view !== "home")
                 (e.currentTarget as HTMLElement).style.color = "#9ca3af"
             }}
           >
-            Products
-          </button>
-          <button
-            onClick={() => handleNavClick("agent-proxy")}
-            className="px-4 py-2 text-sm font-medium cursor-pointer transition-colors rounded"
-            style={{ color: view === "home" ? "#9ca3af" : "#6b7280" }}
-            onMouseEnter={(e) => {
-              if (view === "home")
-                (e.currentTarget as HTMLElement).style.color = "#a8ff3e"
-            }}
-            onMouseLeave={(e) => {
-              if (view === "home")
-                (e.currentTarget as HTMLElement).style.color = "#9ca3af"
-            }}
-          >
-            Agent Proxy
-          </button>
-          <button
-            onClick={() => handleNavClick("integrations")}
-            className="px-4 py-2 text-sm font-medium cursor-pointer transition-colors rounded"
-            style={{ color: view === "home" ? "#9ca3af" : "#6b7280" }}
-            onMouseEnter={(e) => {
-              if (view === "home")
-                (e.currentTarget as HTMLElement).style.color = "#a8ff3e"
-            }}
-            onMouseLeave={(e) => {
-              if (view === "home")
-                (e.currentTarget as HTMLElement).style.color = "#9ca3af"
-            }}
-          >
-            Integrations
+            Home
           </button>
           <button
             onClick={() => setView("team")}
@@ -330,7 +379,7 @@ function NavBar({ view, setView }: { view: string setView: (v: any) => void }) {
                 (e.currentTarget as HTMLElement).style.color = "#9ca3af"
             }}
           >
-            Our Team (ทีมผู้พัฒนา)
+            Team
           </button>
         </div>
 
@@ -415,24 +464,6 @@ function NavBar({ view, setView }: { view: string setView: (v: any) => void }) {
             Home
           </button>
           <button
-            onClick={() => handleNavClick("features")}
-            className="text-left text-sm font-medium text-[#9ca3af] hover:text-[#a8ff3e] py-1.5 cursor-pointer"
-          >
-            Products
-          </button>
-          <button
-            onClick={() => handleNavClick("agent-proxy")}
-            className="text-left text-sm font-medium text-[#9ca3af] hover:text-[#a8ff3e] py-1.5 cursor-pointer"
-          >
-            Agent Proxy
-          </button>
-          <button
-            onClick={() => handleNavClick("integrations")}
-            className="text-left text-sm font-medium text-[#9ca3af] hover:text-[#a8ff3e] py-1.5 cursor-pointer"
-          >
-            Integrations
-          </button>
-          <button
             onClick={() => {
               setView("team")
               setMobileMenuOpen(false)
@@ -445,7 +476,7 @@ function NavBar({ view, setView }: { view: string setView: (v: any) => void }) {
                   : "#9ca3af",
             }}
           >
-            Our Team (ทีมผู้พัฒนา)
+            Team
           </button>
           <div className="flex flex-col gap-2 pt-2 border-t border-[#1e2230]">
             <button
@@ -1245,34 +1276,60 @@ function CTASection() {
           <div className="text-center lg:text-left">
             <h2
               className="font-display font-bold mb-6"
-              style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', color: '#f0f2f5', letterSpacing: '-0.03em' }}
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                color: "#f0f2f5",
+                letterSpacing: "-0.03em",
+              }}
             >
-              Ship with confidence.<br />
-              <span style={{ color: '#a8ff3e' }}>Secure by default.</span>
+              Ship with confidence.
+              <br />
+              <span style={{ color: "#a8ff3e" }}>Secure by default.</span>
             </h2>
-            <p className="text-lg mb-10" style={{ color: '#4b5563' }}>
-              Join 100,000+ engineers who manage their secrets, certificates, and access with brick. Free to start. Built to scale.
+            <p className="text-lg mb-10" style={{ color: "#4b5563" }}>
+              Join 100,000+ engineers who manage their secrets, certificates,
+              and access with brick. Free to start. Built to scale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#contact-links"
                 className="px-8 py-4 rounded-lg font-semibold text-base transition-all"
-                style={{ background: '#a8ff3e', color: '#09090e' }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = '#bfff5c')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = '#a8ff3e')}
+                style={{ background: "#a8ff3e", color: "#09090e" }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = "#bfff5c")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = "#a8ff3e")
+                }
               >
                 Get started — it's free
               </a>
             </div>
           </div>
 
-          <div id="contact-links" className="rounded-2xl p-6 sm:p-8" style={{ background: '#0f1117', border: '1px solid #1e2230' }}>
-            <div className="font-mono text-xs mb-3" style={{ color: '#a8ff3e' }}>CONTACT</div>
-            <h3 className="font-display font-semibold text-2xl mb-3" style={{ color: '#f0f2f5', letterSpacing: '-0.02em' }}>
+          <div
+            id="contact-links"
+            className="rounded-2xl p-6 sm:p-8"
+            style={{ background: "#0f1117", border: "1px solid #1e2230" }}
+          >
+            <div
+              className="font-mono text-xs mb-3"
+              style={{ color: "#a8ff3e" }}
+            >
+              CONTACT
+            </div>
+            <h3
+              className="font-display font-semibold text-2xl mb-3"
+              style={{ color: "#f0f2f5", letterSpacing: "-0.02em" }}
+            >
               Talk to the right team.
             </h3>
-            <p className="text-sm leading-relaxed mb-6" style={{ color: '#6b7280' }}>
-              Reach sales for a demo, support for technical questions, or the team for partnership and enterprise requests.
+            <p
+              className="text-sm leading-relaxed mb-6"
+              style={{ color: "#6b7280" }}
+            >
+              Reach sales for a demo, support for technical questions, or the
+              team for partnership and enterprise requests.
             </p>
             <div className="space-y-3">
               <a
@@ -1280,45 +1337,111 @@ function CTASection() {
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between px-4 py-3 rounded-lg transition-all"
-                style={{ background: '#080a0f', border: '1px solid #1e2230', color: '#e8eaf0' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#a8ff3e40'; (e.currentTarget as HTMLElement).style.background = '#0b0d14' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e2230'; (e.currentTarget as HTMLElement).style.background = '#080a0f' }}
+                style={{
+                  background: "#080a0f",
+                  border: "1px solid #1e2230",
+                  color: "#e8eaf0",
+                }}
+                onMouseEnter={(e) => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor =
+                    "#a8ff3e40"
+                  ;(e.currentTarget as HTMLElement).style.background = "#0b0d14"
+                }}
+                onMouseLeave={(e) => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor =
+                    "#1e2230"
+                  ;(e.currentTarget as HTMLElement).style.background = "#080a0f"
+                }}
               >
                 <span>
-                  <span className="font-mono text-xs block" style={{ color: '#9ca3af' }}>Sales</span>
+                  <span
+                    className="font-mono text-xs block"
+                    style={{ color: "#9ca3af" }}
+                  >
+                    Sales
+                  </span>
                   <span className="text-sm">sales@brick.com</span>
                 </span>
-                <span className="font-mono text-xs" style={{ color: '#a8ff3e' }}>↗</span>
+                <span
+                  className="font-mono text-xs"
+                  style={{ color: "#a8ff3e" }}
+                >
+                  ↗
+                </span>
               </a>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=support@brick.com"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between px-4 py-3 rounded-lg transition-all"
-                style={{ background: '#080a0f', border: '1px solid #1e2230', color: '#e8eaf0' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#a8ff3e40'; (e.currentTarget as HTMLElement).style.background = '#0b0d14' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e2230'; (e.currentTarget as HTMLElement).style.background = '#080a0f' }}
+                style={{
+                  background: "#080a0f",
+                  border: "1px solid #1e2230",
+                  color: "#e8eaf0",
+                }}
+                onMouseEnter={(e) => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor =
+                    "#a8ff3e40"
+                  ;(e.currentTarget as HTMLElement).style.background = "#0b0d14"
+                }}
+                onMouseLeave={(e) => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor =
+                    "#1e2230"
+                  ;(e.currentTarget as HTMLElement).style.background = "#080a0f"
+                }}
               >
                 <span>
-                  <span className="font-mono text-xs block" style={{ color: '#9ca3af' }}>Support</span>
+                  <span
+                    className="font-mono text-xs block"
+                    style={{ color: "#9ca3af" }}
+                  >
+                    Support
+                  </span>
                   <span className="text-sm">support@brick.com</span>
                 </span>
-                <span className="font-mono text-xs" style={{ color: '#a8ff3e' }}>↗</span>
+                <span
+                  className="font-mono text-xs"
+                  style={{ color: "#a8ff3e" }}
+                >
+                  ↗
+                </span>
               </a>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=hello@brick.com"
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-between px-4 py-3 rounded-lg transition-all"
-                style={{ background: '#080a0f', border: '1px solid #1e2230', color: '#e8eaf0' }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#a8ff3e40'; (e.currentTarget as HTMLElement).style.background = '#0b0d14' }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.borderColor = '#1e2230'; (e.currentTarget as HTMLElement).style.background = '#080a0f' }}
+                style={{
+                  background: "#080a0f",
+                  border: "1px solid #1e2230",
+                  color: "#e8eaf0",
+                }}
+                onMouseEnter={(e) => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor =
+                    "#a8ff3e40"
+                  ;(e.currentTarget as HTMLElement).style.background = "#0b0d14"
+                }}
+                onMouseLeave={(e) => {
+                  ;(e.currentTarget as HTMLElement).style.borderColor =
+                    "#1e2230"
+                  ;(e.currentTarget as HTMLElement).style.background = "#080a0f"
+                }}
               >
                 <span>
-                  <span className="font-mono text-xs block" style={{ color: '#9ca3af' }}>General</span>
+                  <span
+                    className="font-mono text-xs block"
+                    style={{ color: "#9ca3af" }}
+                  >
+                    General
+                  </span>
                   <span className="text-sm">hello@brick.com</span>
                 </span>
-                <span className="font-mono text-xs" style={{ color: '#a8ff3e' }}>↗</span>
+                <span
+                  className="font-mono text-xs"
+                  style={{ color: "#a8ff3e" }}
+                >
+                  ↗
+                </span>
               </a>
             </div>
           </div>
@@ -1328,7 +1451,7 @@ function CTASection() {
   )
 }
 
-function Footer({ view, setView }: { view: string; setView: (v: any) => void }) {
+function Footer({ view, setView }: { view: string setView: (v: any) => void }) {
   const cols = [
     {
       title: "Product",
@@ -1341,9 +1464,7 @@ function Footer({ view, setView }: { view: string; setView: (v: any) => void }) 
     },
     {
       title: "Our Team",
-      links: [
-        "About Us",
-      ],
+      links: ["About Us"],
     },
   ]
 
