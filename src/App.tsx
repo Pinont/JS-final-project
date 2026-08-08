@@ -4,6 +4,7 @@ import TeamSection from "./components/TeamSection"
 import PMPortfolio from "./components/PMPortfolio"
 import FrontendPortfolio from "./components/FrontendPortfolio"
 import UXUIPortfolio from "./components/UXUIPortfolio"
+import ClientTestimonials from "./components/ClientTestimonials"
 import Achievements from "./components/Achievements"
 import DesignSystem from "./DesignSystem"
 
@@ -1501,6 +1502,7 @@ export default function App() {
             <IntegrationsSection />
           </div>
           <TestimonialsSection />
+          <ClientTestimonials />
           <div id="compliance">
             <ComplianceSection />
           </div>
