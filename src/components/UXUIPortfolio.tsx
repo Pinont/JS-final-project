@@ -15,27 +15,19 @@ export default function UXUIPortfolio({
   const themeColors = {
     lime: {
       primary: "#a8ff3e",
-      text: "Brick Lime",
-      glow: "rgba(168,255,62,0.4)",
-      bg: "rgba(168,255,62,0.04)",
+      text: "Neon Lime",
     },
     purple: {
       primary: "#b94fff",
-      text: "Privileged Access Purple",
-      glow: "rgba(185,79,255,0.4)",
-      bg: "rgba(185,79,255,0.04)",
+      text: "Creative Purple",
     },
     cyan: {
       primary: "#00d4ff",
-      text: "PKI Certificate Cyan",
-      glow: "rgba(0,212,255,0.4)",
-      bg: "rgba(0,212,255,0.04)",
+      text: "Electric Cyan",
     },
     orange: {
       primary: "#ff6b35",
-      text: "Agent Proxy Orange",
-      glow: "rgba(255,107,53,0.4)",
-      bg: "rgba(255,107,53,0.04)",
+      text: "Sunset Orange",
     },
   }
 
@@ -43,6 +35,7 @@ export default function UXUIPortfolio({
 
   return (
     <section className="relative min-h-screen pt-28 pb-20 overflow-hidden grid-bg">
+      {/* Background Radial Glow */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -71,7 +64,7 @@ export default function UXUIPortfolio({
               ;(e.currentTarget as HTMLElement).style.color = "#9ca3af"
             }}
           >
-            ← Back to Team (กลับหน้าทีม)
+            ← Back to Team
           </button>
 
           <span className="font-mono text-xs text-[#00d4ff] font-bold">
@@ -79,60 +72,32 @@ export default function UXUIPortfolio({
           </span>
         </div>
 
-        {/* Member Profile Hero */}
+        {/* Member Profile Hero (Original 2-Column Grid Layout) */}
         <div className="grid md:grid-cols-[1fr_2fr] gap-12 mb-16 items-center">
+          {/* Left Column Profile Hero */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left">
             <div
-              className="w-36 h-36 rounded-2xl flex items-center justify-center mb-6"
+              className="w-36 h-36 rounded-2xl flex items-center justify-center mb-6 overflow-hidden relative shadow-lg"
               style={{
                 background: "rgba(0,212,255,0.08)",
-                border: "1px solid rgba(0,212,255,0.2)",
+                border: "1px solid rgba(0,212,255,0.25)",
               }}
             >
-              <svg
-                width="100"
-                height="100"
-                viewBox="0 0 100 100"
-                className="w-24 h-24 text-[#00d4ff]"
-              >
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="45"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <rect
-                  x="35"
-                  y="35"
-                  width="30"
-                  height="30"
-                  rx="3"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  fill="none"
-                />
-                <circle
-                  cx="50"
-                  cy="50"
-                  r="18"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  fill="none"
-                  strokeDasharray="3 3"
-                />
-                <circle cx="50" cy="50" r="4" fill="currentColor" />
-              </svg>
+              <img
+                src="/ProfilePhooriwat.jpg"
+                alt="Phooriwat Suphakkanok"
+                className="w-full h-full object-cover transition-transform"
+                style={{
+                  transform: "scale(1.3)",
+                  transformOrigin: "65% 20%",
+                }}
+              />
             </div>
-            <h1 className="font-display font-bold text-3xl md:text-4xl text-white mb-1">
-              Phuriwat Supakkanok
+            <h1 className="font-display font-bold text-3xl md:text-3xl text-white mb-4">
+              Phooriwat Suphakkanok
             </h1>
-            <div className="font-display text-lg text-[#9ca3af] mb-4">
-              ภูริวัชร สุภัคกนก
-            </div>
             <span
-              className="inline-block font-mono text-xs px-3 py-1 rounded-full mb-6 font-semibold"
+              className="inline-block font-mono text-xs px-3 py-1 rounded-full mb-4 font-semibold"
               style={{
                 background: "rgba(0,212,255,0.12)",
                 color: "#00d4ff",
@@ -141,14 +106,41 @@ export default function UXUIPortfolio({
             >
               UX/UI Designer (UX/UI)
             </span>
+
+            <a
+              href="https://phoo3011.me"
+              target="_blank"
+              rel="noreferrer"
+              className="px-4 py-2.5 rounded-lg font-semibold text-xs transition-all cursor-pointer flex items-center gap-2"
+              style={{
+                background: "rgba(0, 212, 255, 0.1)",
+                color: "#00d4ff",
+                border: "1px solid rgba(0, 212, 255, 0.2)",
+              }}
+              onMouseEnter={(e) => {
+                ;(e.currentTarget as HTMLElement).style.background = "#00d4ff"
+                ;(e.currentTarget as HTMLElement).style.color = "#09090e"
+                ;(e.currentTarget as HTMLElement).style.borderColor = "#00d4ff"
+              }}
+              onMouseLeave={(e) => {
+                ;(e.currentTarget as HTMLElement).style.background =
+                  "rgba(0, 212, 255, 0.1)"
+                ;(e.currentTarget as HTMLElement).style.color = "#00d4ff"
+                ;(e.currentTarget as HTMLElement).style.borderColor =
+                  "rgba(0, 212, 255, 0.2)"
+              }}
+            >
+              🌐 Visit Portfolio ↗
+            </a>
           </div>
 
+          {/* Right Column Basic Info Box */}
           <div
             className="rounded-2xl p-6 sm:p-8"
             style={{ background: "#0f1117", border: "1px solid #1e2230" }}
           >
             <div className="font-mono text-xs mb-3 text-[#00d4ff] font-bold">
-              BASIC INFO (ประวัติส่วนตัว)
+              BASIC INFO
             </div>
             <div className="grid sm:grid-cols-2 gap-6 text-sm">
               <div>
@@ -156,10 +148,7 @@ export default function UXUIPortfolio({
                   NAME:
                 </div>
                 <div className="text-white font-semibold font-display">
-                  Phuriwat Supakkanok
-                </div>
-                <div className="text-[#9ca3af] text-xs font-display">
-                  ภูริวัชร สุภัคกนก
+                  Phooriwat Suphakkanok
                 </div>
               </div>
               <div>
@@ -167,12 +156,12 @@ export default function UXUIPortfolio({
                   ROLE IN COMPANY:
                 </div>
                 <div className="text-[#00d4ff] font-semibold">
-                  Senior UX/UI Designer
+                  UX/UI Designer
                 </div>
               </div>
               <div>
                 <div className="text-[#6b7280] font-mono text-xs font-semibold">
-                  OFFICE LOCATION:
+                  LOCATION:
                 </div>
                 <div className="text-white">Bangkok, Thailand</div>
               </div>
@@ -180,26 +169,31 @@ export default function UXUIPortfolio({
                 <div className="text-[#6b7280] font-mono text-xs font-semibold">
                   CONTACT:
                 </div>
-                <div className="text-white font-mono">
-                  design.phuriwat@brick-team.io
-                </div>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=phooriwat3011@gmail.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white hover:text-[#00d4ff] hover:underline font-mono text-xs block transition-colors mt-0.5"
+                >
+                  phooriwat3011@gmail.com ↗
+                </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Interactive Theme Builder Sandbox */}
+        {/* Interactive UI Design System Playground */}
         <div className="mb-16">
           <div className="font-mono text-xs text-[#00d4ff] mb-1 font-bold">
             INTERACTIVE EXPERIENCE
           </div>
           <h2 className="font-display font-bold text-2xl text-white mb-3">
-            Design Token & Component Playground
+            Design Token & UI Component Playground
           </h2>
           <p className="text-sm text-[#6b7280] mb-8 max-w-3xl leading-relaxed">
-            Adjust the design tokens in the controller panel below. See how the
-            UI component card adapts its visual elements, font hierarchy,
-            transparency layers, and shadow glows in real time.
+            Adjust the design tokens in the controller panel below to see how the
+            UI component card adapts color palettes, typography scale,
+            glassmorphism opacity, and glow shadows in real time.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-8 items-stretch">
@@ -226,16 +220,16 @@ export default function UXUIPortfolio({
                 <div className="flex justify-between items-center mb-6">
                   <div className="flex items-center gap-2">
                     <div
-                      className="w-5 h-5 rounded flex items-center justify-center font-mono text-[9px] font-bold"
+                      className="w-5 h-5 rounded flex items-center justify-center font-mono text-[10px] font-bold"
                       style={{
                         background: activeTheme.primary,
                         color: "#09090e",
                       }}
                     >
-                      🔑
+                      ❖
                     </div>
                     <span className="font-display font-semibold text-white text-xs">
-                      Key Vault
+                      Playground
                     </span>
                   </div>
                   <span
@@ -246,18 +240,21 @@ export default function UXUIPortfolio({
                       background: `${activeTheme.primary}08`,
                     }}
                   >
-                    {fontSize.toUpperCase()} SIZE
+                    {fontSize.toUpperCase()} SCALE
                   </span>
                 </div>
 
                 {/* Body Content */}
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-mono text-[10px] text-[#6b7280] mb-0.5">
-                      DATABASE_URL
+                    <h3 className="font-mono text-[10px] text-[#6b7280] mb-0.5 uppercase font-bold">
+                      PORTFOLIO_URL
                     </h3>
-                    <div
-                      className="font-mono font-medium rounded border border-[#1e2230] p-2 bg-[#09090e] tracking-wide"
+                    <a
+                      href="https://phoo3011.me"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="font-mono font-medium rounded border border-[#1e2230] p-2 bg-[#09090e] tracking-wide flex items-center justify-between transition-all hover:border-[#00d4ff]/60 cursor-pointer group block"
                       style={{
                         fontSize:
                           fontSize === "sm"
@@ -268,13 +265,16 @@ export default function UXUIPortfolio({
                         color: activeTheme.primary,
                       }}
                     >
-                      postgres://admin:••••••••••••@10.0.4.1/prod
-                    </div>
+                      <span>phoo3011.me</span>
+                      <span className="text-[10px] opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">
+                        ↗
+                      </span>
+                    </a>
                   </div>
 
                   <div>
-                    <h3 className="font-mono text-[10px] text-[#6b7280] mb-0.5">
-                      METADATA
+                    <h3 className="font-mono text-[10px] text-[#6b7280] mb-0.5 uppercase font-bold">
+                      DESIGN SPECIFICATION
                     </h3>
                     <p
                       className="text-[#9ca3af] leading-relaxed"
@@ -287,8 +287,8 @@ export default function UXUIPortfolio({
                               : "15px",
                       }}
                     >
-                      This component represents a cryptographic key container
-                      configured with active theme tokens.
+                      Crafting intuitive design systems, high-fidelity prototypes,
+                      and user-centered digital interfaces.
                     </p>
                   </div>
                 </div>
@@ -310,9 +310,9 @@ export default function UXUIPortfolio({
                   Theme Color Token
                 </label>
                 <div className="grid grid-cols-2 gap-2">
-                  {(Object.keys(
-                    themeColors,
-                  ) as Array<keyof typeof themeColors>).map((t) => (
+                  {(
+                    Object.keys(themeColors) as Array<keyof typeof themeColors>
+                  ).map((t) => (
                     <button
                       key={t}
                       onClick={() => setTheme(t)}
@@ -400,45 +400,7 @@ export default function UXUIPortfolio({
           </div>
         </div>
 
-        {/* UX/UI Workflow Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
-          {[
-            {
-              phase: "1. Discovery",
-              label: "User Research",
-              desc: "Understanding developer friction in configuring certificates & variables.",
-            },
-            {
-              phase: "2. Wireframing",
-              label: "Interactive Prototypes",
-              desc: "Building dynamic layouts in Figma with structured guidelines.",
-            },
-            {
-              phase: "3. Tokenization",
-              label: "Design Systems",
-              desc: "Defining color ranges, layouts, spacing grids, and styles.",
-            },
-            {
-              phase: "4. Validation",
-              label: "Handoff Specs",
-              desc: "Translating Figma variables into code tokens and Tailwind classes.",
-            },
-          ].map((w, i) => (
-            <div
-              key={i}
-              className="rounded-xl p-5 border border-[#1e2230]"
-              style={{ background: "#0f1117" }}
-            >
-              <div className="font-mono text-[10px] text-[#00d4ff] mb-1">
-                {w.phase}
-              </div>
-              <h4 className="font-display font-semibold text-sm text-white mb-2">
-                {w.label}
-              </h4>
-              <p className="text-xs text-[#6b7280] leading-relaxed">{w.desc}</p>
-            </div>
-          ))}
-        </div>
+
 
         {/* Portfolio Circle Navigation */}
         <div className="flex justify-between items-center mt-16 pt-8 border-t border-[#1e2230]">
@@ -452,10 +414,14 @@ export default function UXUIPortfolio({
             onClick={() => setView("portfolio-pm")}
             className="px-5 py-2.5 rounded-lg font-semibold text-sm transition-all cursor-pointer"
             style={{ background: "#00d4ff", color: "#09090e" }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "#80e9ff")}
-            onMouseLeave={(e) => (e.currentTarget.style.background = "#00d4ff")}
+            onMouseEnter={(e) =>
+              ((e.currentTarget as HTMLElement).style.background = "#80e9ff")
+            }
+            onMouseLeave={(e) =>
+              ((e.currentTarget as HTMLElement).style.background = "#00d4ff")
+            }
           >
-            Next Portfolio (Nonniphat) →
+            Next Portfolio (Nonnipat) →
           </button>
         </div>
       </div>

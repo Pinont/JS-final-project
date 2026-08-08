@@ -40,13 +40,13 @@ export const TEAM_MEMBERS: TeamMember[] = [
   },
   {
     id: "uxui",
-    nameTh: "ภูริวัชร สุภัคกนก",
-    nameEn: "Phuriwat Supakkanok",
+    nameTh: "",
+    nameEn: "Phooriwat Suphakkanok",
     role: "UX/UI Designer (UX/UI)",
     bio: "Crafting intuitive, accessible, and high-fidelity design systems and user experiences for complex security workflows.",
-    email: "design.phuriwat@brick-team.io",
-    github: "phuriwat-ux",
-    linkedin: "phuriwat-supakkanok",
+    email: "phooriwat3011@gmail.com",
+    github: "phoo3011",
+    linkedin: "phoo3011",
     accentColor: "#00d4ff", // Cyan
     initials: "PS",
   },

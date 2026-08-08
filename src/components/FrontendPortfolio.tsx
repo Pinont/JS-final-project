@@ -442,7 +442,7 @@ export default function FrontendPortfolio({
             onMouseEnter={(e) => (e.currentTarget.style.background = "#bfff5c")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "#a8ff3e")}
           >
-            Next Portfolio (Phuriwat) →
+            Next Portfolio (Phooriwat) →
           </button>
         </div>
       </div>
