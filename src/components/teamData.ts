@@ -9,6 +9,7 @@ export interface TeamMember {
   linkedin: string
   accentColor: string
   initials: string
+  cv?: string
 }
 
 export const TEAM_MEMBERS: TeamMember[] = [
@@ -33,6 +34,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     email: "thanatphong2719@gmail.com",
     github: "WinTuner",
     linkedin: "thanatphong-tharin",
+    cv: "https://thanatphong.vercel.app/",
     accentColor: "#a8ff3e", // Lime Green
     initials: "TT",
   },

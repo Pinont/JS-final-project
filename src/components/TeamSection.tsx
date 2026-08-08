@@ -356,6 +356,19 @@ export default function TeamSection({
                     >
                       💼 LinkedIn
                     </a>
+                    {m.cv && (
+                      <>
+                        <span className="text-[#374151]">·</span>
+                        <a
+                          href={m.cv}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
+                        >
+                          📄 CV
+                        </a>
+                      </>
+                    )}
                   </div>
 
                   {/* CTA Button */}
