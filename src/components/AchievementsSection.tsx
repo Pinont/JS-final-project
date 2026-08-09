@@ -12,19 +12,14 @@ export const BRICK_IMPLEMENTATIONS = [
       "Migrated from HashiCorp Vault to Brick in 8 weeks",
       "Zero-downtime secret rotation across 500+ services",
       "Unified RBAC across dev/staging/prod with GitOps",
-      "SOC 2 Type II evidence automation via Brick audit logs",
+      "Compliance evidence automation via Brick audit logs",
     ],
   },
   {
     title: "Fintech Startup — Agent Proxy for AI Platform",
     client: "AI-powered lending platform (Series B)",
     scope: "50+ LLM agents, 10M+ monthly requests",
-    tech: [
-      "Brick Agent Proxy",
-      "OpenAI/Anthropic",
-      "Kubernetes",
-      "Prometheus",
-    ],
+    tech: ["Brick Agent Proxy", "OpenAI/Anthropic", "Kubernetes", "Prometheus"],
     highlights: [
       "Eliminated all raw API keys from model context windows",
       "Per-agent ephemeral tokens with 15-min TTL",
@@ -72,13 +67,7 @@ export const PROJECT_HIGHLIGHTS = [
     title: "PKI Certificate Fleet Management",
     category: "Certificate Automation",
     desc: "Full TLS lifecycle automation for 2,000+ certificates across hybrid cloud.",
-    tech: [
-      "Brick PKI",
-      "ACME",
-      "Terraform",
-      "cert-manager",
-      "Slack alerts",
-    ],
+    tech: ["Brick PKI", "ACME", "Terraform", "cert-manager", "Slack alerts"],
     metrics: "0 cert expiries in 18 months, 95% ops time saved",
   },
 ]
@@ -93,7 +82,7 @@ export const TECH_STACK = [
   "Prometheus / Grafana / Loki",
   "OpenTelemetry / Jaeger",
   "Python / Go / TypeScript",
-  "PCI-DSS / SOC 2 / ISO 27001",
+  "Compliance & Security Standards",
 ]
 
 // ─── Section: Achievements ───────────────────────────────────────────────────

@@ -24,7 +24,7 @@ const CORE_VALUES = [
   {
     icon: "🤝",
     title: "Customer Trust",
-    body: "We hold ourselves to SOC 2, ISO 27001, and HIPAA. Our customers trust us with their most sensitive data.",
+    body: "Our customers trust us with their most sensitive data. Security is the foundation of everything we build.",
     color: "#ff6b35",
   },
 ]

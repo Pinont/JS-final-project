@@ -91,64 +91,35 @@ export default function HeroSection() {
               style={{ color: "var(--muted-foreground)" }}
             >
               Manage secrets, certificates, and privileged access — without
-              handing credentials to humans <em>or</em> AI agents. Open-source,
-              SOC2 certified, and loved by 50,000+ engineers.
+              handing credentials to humans <em>or</em> AI agents. Open-source
+              and loved by 50,000+ engineers.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <a
-                href="#contact"
+                href="https://github.com/Pinont/JS-final-project"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3 rounded font-semibold text-sm transition-all animate-pulse-glow"
                 style={{
                   background: "var(--primary)",
                   color: "var(--background)",
                 }}
-                onMouseEnter={(e) =>
-                  (e.currentTarget.style.background = "var(--primary-hover)")
-                }
-                onMouseLeave={(e) =>
-                  (e.currentTarget.style.background = "var(--primary)")
-                }
-              >
-                Start for free →
-              </a>
-              <a
-                href="#achievements"
-                className="px-6 py-3 rounded font-semibold text-sm transition-all flex items-center gap-2"
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  color: "var(--foreground)",
-                  border: "1px solid var(--border)",
-                }}
                 onMouseEnter={(e) => {
-                  ;(e.currentTarget as HTMLElement).style.borderColor =
-                    "rgba(168,255,62,0.25)"
-                  ;(e.currentTarget as HTMLElement).style.background =
-                    "rgba(168,255,62,0.05)"
+                  e.currentTarget.style.background = "var(--primary-hover)"
+                  e.currentTarget.style.color = "var(--primary)"
                 }}
                 onMouseLeave={(e) => {
-                  ;(e.currentTarget as HTMLElement).style.borderColor =
-                    "var(--border)"
-                  ;(e.currentTarget as HTMLElement).style.background =
-                    "rgba(255,255,255,0.05)"
+                  e.currentTarget.style.background = "var(--primary)"
+                  e.currentTarget.style.color = "var(--background)"
                 }}
               >
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <polygon points="5,3 19,12 5,21" />
-                </svg>
-                View our work
+                Start for free →
               </a>
             </div>
 
             <div className="mt-8 flex items-center gap-6 justify-center lg:justify-start">
-              {["SOC 2 Type II", "ISO 27001", "Self-hostable"].map((t) => (
+              {["Self-hostable"].map((t) => (
                 <span
                   key={t}
                   className="flex items-center gap-1.5 text-xs font-mono"
