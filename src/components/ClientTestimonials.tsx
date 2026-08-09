@@ -45,7 +45,7 @@ const TESTIMONIALS = [
   },
 ]
 
-function Stars({ count, color }: { count: number color: string }) {
+function Stars({ count, color }: { count: number; color: string }) {
   return (
     <div className="flex gap-0.5 mb-4">
       {Array.from({ length: count }).map((_, i) => (
