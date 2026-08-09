@@ -58,12 +58,10 @@ export default function AboutCompany() {
       {/* Background glow */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={
-          {
-            background:
-              "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(168,255,62,0.04) 0%, transparent 70%)",
-          }
-        }
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 50% at 50% 50%, rgba(168,255,62,0.04) 0%, transparent 70%)",
+        }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -71,26 +69,22 @@ export default function AboutCompany() {
         <div className="text-center mb-16">
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4 font-mono text-xs"
-            style={
-              {
-                background: "rgba(168,255,62,0.08)",
-                border: "1px solid rgba(168,255,62,0.2)",
-                color: "#a8ff3e",
-              }
-            }
+            style={{
+              background: "rgba(168,255,62,0.08)",
+              border: "1px solid rgba(168,255,62,0.2)",
+              color: "#a8ff3e",
+            }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-current" />
             ABOUT THE COMPANY
           </div>
           <h2
             className="font-display font-bold mb-5"
-            style={
-              {
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
-                color: "#f0f2f5",
-                letterSpacing: "-0.03em",
-              }
-            }
+            style={{
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              color: "#f0f2f5",
+              letterSpacing: "-0.03em",
+            }}
           >
             We secure the software
             <br />

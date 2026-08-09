@@ -288,48 +288,50 @@ export default function TeamSection({
                 {/* Bottom section of card */}
                 <div>
                   {/* Contact channels */}
-                  <div className="flex justify-center gap-4 mb-6 border-t border-[#1e2230]/50 pt-5">
-                    <a
-                      href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${m.email}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
-                      title={m.email}
-                    >
-                      ✉ Email
-                    </a>
-                    <span className="text-[#374151]">·</span>
-                    <a
-                      href={`https://github.com/${m.github}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
-                    >
-                      🐙 GitHub
-                    </a>
-                    <span className="text-[#374151]">·</span>
-                    <a
-                      href={`https://linkedin.com/in/${m.linkedin}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
-                    >
-                      💼 LinkedIn
-                    </a>
-                    {m.cv && (
-                      <>
-                        <span className="text-[#374151]">·</span>
-                        <a
-                          href={m.cv}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
-                        >
-                          📄 CV
-                        </a>
-                      </>
-                    )}
-                  </div>
+                  {m.id !== "pm" && (
+                    <div className="flex justify-center gap-4 mb-6 border-t border-[#1e2230]/50 pt-5">
+                      <a
+                        href={`https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${m.email}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
+                        title={m.email}
+                      >
+                        ✉ Email
+                      </a>
+                      <span className="text-[#374151]">·</span>
+                      <a
+                        href={`https://github.com/${m.github}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
+                      >
+                        🐙 GitHub
+                      </a>
+                      <span className="text-[#374151]">·</span>
+                      <a
+                        href={`https://linkedin.com/in/${m.linkedin}`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
+                      >
+                        💼 LinkedIn
+                      </a>
+                      {m.cv && (
+                        <>
+                          <span className="text-[#374151]">·</span>
+                          <a
+                            href={m.cv}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-[#4b5563] hover:text-white transition-colors text-xs font-mono"
+                          >
+                            📄 CV
+                          </a>
+                        </>
+                      )}
+                    </div>
+                  )}
 
                   {/* CTA Button */}
                   <button

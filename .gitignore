@@ -13,3 +13,4 @@ logs/
 .tmp-*
 TODO/*
 HANDOFF.md
+.hermes/*

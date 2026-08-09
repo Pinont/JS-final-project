@@ -451,7 +451,8 @@ Design tokens bridge the gap between design and development. Invest in the found
   {
     id: 7,
     slug: "lti-learning-platforms-integration",
-    title: "Understanding LTI: Integrating Learning Tools with Educational Platforms",
+    title:
+      "Understanding LTI: Integrating Learning Tools with Educational Platforms",
     excerpt:
       "A comprehensive guide to Learning Tools Interoperability (LTI) 1.3 - the standard protocol that enables seamless integration between learning management systems and external educational tools.",
     content: `
@@ -743,6 +744,10 @@ export function getRelatedPosts(currentSlug: string, limit = 3): BlogPost[] {
 
   return blogPosts
     .filter((post) => post.slug !== currentSlug)
-    .filter((post) => post.category === currentPost.category || post.tags.some((tag) => currentPost.tags.includes(tag)))
+    .filter(
+      (post) =>
+        post.category === currentPost.category ||
+        post.tags.some((tag) => currentPost.tags.includes(tag)),
+    )
     .slice(0, limit)
 }

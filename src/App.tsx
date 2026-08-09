@@ -31,27 +31,34 @@ function ViewFallback() {
 export default function App() {
   const [view, setView] = useState<View>("home")
   const [showLoader, setShowLoader] = useState(true)
+  const [hasLoaded, setHasLoaded] = useState(false)
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }, [view])
 
-  // Show loader only on initial home view load
+  // Show loader only on initial home view load, not on subsequent navigations
   useEffect(() => {
-    if (view === "home") {
+    if (!hasLoaded) {
+      // First load ever
       setShowLoader(true)
+      setHasLoaded(true)
       const timer = setTimeout(() => setShowLoader(false), 2800)
       return () => clearTimeout(timer)
+    } else if (view === "home") {
+      // Subsequent visits to home - don't show loader
+      setShowLoader(false)
     } else {
+      // Other views - don't show loader
       setShowLoader(false)
     }
-  }, [view])
+  }, [view, hasLoaded])
 
   return (
     <div style={{ background: "var(--background)", minHeight: "100vh" }}>
-      {view !== "portfolio-frontend" && (
+      {view === "home" || view === "team" ? (
         <NavBar view={view} setView={setView} />
-      )}
+      ) : null}
 
       {showLoader && view === "home" && <BrickLoader />}
 

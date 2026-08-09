@@ -5,12 +5,16 @@ interface TerminalWidgetProps {
 }
 
 export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
-  const [terminalWidgetTab, setTerminalWidgetTab] = useState<"status" | "git" | "neofetch" | "cli">("status")
+  const [terminalWidgetTab, setTerminalWidgetTab] =
+    useState<"status" | "git" | "neofetch" | "cli">("status")
   const [widgetTypedCommand, setWidgetTypedCommand] = useState("")
   const [widgetIsTyping, setWidgetIsTyping] = useState(false)
   const [widgetShowOutput, setWidgetShowOutput] = useState(false)
   const [widgetCliInput, setWidgetCliInput] = useState("")
-  const [widgetCliHistory, setWidgetCliHistory] = useState<Array<{ command: string; output: React.ReactNode }>>([
+  const [widgetCliHistory, setWidgetCliHistory] = useState<Array<{
+    command: string
+    output: React.ReactNode
+  }>>([
     {
       command: "init-portfolio-cli.sh",
       output: (
@@ -19,19 +23,23 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
             --- WIN'S INTERACTIVE PORTFOLIO SHELL v2.0.0 ---
           </p>
           <p className="text-[#6b7280] text-[9px]">
-            Type <span className="text-[#a8ff3e] font-bold">help</span> to view available commands.
+            Type <span className="text-[#a8ff3e] font-bold">help</span> to view
+            available commands.
           </p>
         </div>
       ),
     },
   ])
 
-  const widgetCommands = useMemo(() => ({
-    status: "systemctl status github-monitor.service",
-    git: "git log -n 3 --oneline",
-    neofetch: "neofetch",
-    cli: "init-portfolio-cli.sh",
-  }), [])
+  const widgetCommands = useMemo(
+    () => ({
+      status: "systemctl status github-monitor.service",
+      git: "git log -n 3 --oneline",
+      neofetch: "neofetch",
+      cli: "init-portfolio-cli.sh",
+    }),
+    [],
+  )
 
   useEffect(() => {
     const fullCommand = widgetCommands[terminalWidgetTab]
@@ -54,7 +62,10 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
     return () => clearInterval(interval)
   }, [terminalWidgetTab, widgetCommands])
 
-  const runWidgetCliCommand = (command: string, args: string[]): React.ReactNode => {
+  const runWidgetCliCommand = (
+    command: string,
+    args: string[],
+  ): React.ReactNode => {
     const cyan = "text-sky-400"
     const green = "text-[#a8ff3e]"
     const dim = "text-[#6b7280]"
@@ -64,12 +75,30 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
         return (
           <div className="space-y-1 text-[10px]">
             <p className="text-[#a8ff3e] font-bold">Available Commands:</p>
-            <p><span className={`${green} font-bold`}>help</span> - Show all commands</p>
-            <p><span className={`${green} font-bold`}>about</span> - Profile bio summary</p>
-            <p><span className={`${green} font-bold`}>skills</span> - List primary tech stack</p>
-            <p><span className={`${green} font-bold`}>projects</span> - Show featured projects</p>
-            <p><span className={`${green} font-bold`}>socials</span> - Social links</p>
-            <p><span className={`${green} font-bold`}>clear</span> - Clear terminal logs</p>
+            <p>
+              <span className={`${green} font-bold`}>help</span> - Show all
+              commands
+            </p>
+            <p>
+              <span className={`${green} font-bold`}>about</span> - Profile bio
+              summary
+            </p>
+            <p>
+              <span className={`${green} font-bold`}>skills</span> - List
+              primary tech stack
+            </p>
+            <p>
+              <span className={`${green} font-bold`}>projects</span> - Show
+              featured projects
+            </p>
+            <p>
+              <span className={`${green} font-bold`}>socials</span> - Social
+              links
+            </p>
+            <p>
+              <span className={`${green} font-bold`}>clear</span> - Clear
+              terminal logs
+            </p>
           </div>
         )
       case "about":
@@ -78,14 +107,18 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
           <div className="space-y-1 text-[10px]">
             <p className="font-bold text-white">Thanatphong Tarin (WinTuner)</p>
             <p className={`${dim} leading-normal`}>
-              Software engineering student at Chiang Mai University and Co-Founder & CTO of Muanjai. Specializing in Agentic AI, full-stack, and DevOps.
+              Software engineering student at Chiang Mai University and
+              Co-Founder & CTO of Muanjai. Specializing in Agentic AI,
+              full-stack, and DevOps.
             </p>
           </div>
         )
       case "skills":
         return (
           <div className="space-y-0.5 font-mono text-[9px]">
-            <p className="text-[#a8ff3e] font-bold mb-1">Tech Stack & Proficiency:</p>
+            <p className="text-[#a8ff3e] font-bold mb-1">
+              Tech Stack & Proficiency:
+            </p>
             <p>Next.js [██████████████░░░░] 75%</p>
             <p>TypeScript [████████████████░░] 80%</p>
             <p>Linux/Bash [██████████████████] 90%</p>
@@ -133,7 +166,10 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
       return
     }
 
-    setWidgetCliHistory((prev) => [...prev, { command: rawInput, output: runWidgetCliCommand(command, args) }])
+    setWidgetCliHistory((prev) => [
+      ...prev,
+      { command: rawInput, output: runWidgetCliCommand(command, args) },
+    ])
     setWidgetCliInput("")
   }
 
@@ -150,7 +186,9 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
       })
       setRamUsed((prev) => {
         const change = (Math.random() - 0.5) * 0.3
-        return parseFloat(Math.min(30.2, Math.max(8.4, prev + change)).toFixed(2))
+        return parseFloat(
+          Math.min(30.2, Math.max(8.4, prev + change)).toFixed(2),
+        )
       })
     }, 2500)
 
@@ -162,7 +200,9 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
         second: "2-digit",
         hour12: false,
       }
-      setLocalTime(new Intl.DateTimeFormat("en-US", options).format(new Date()) + " (ICT)")
+      setLocalTime(
+        new Intl.DateTimeFormat("en-US", options).format(new Date()) + " (ICT)",
+      )
     }, 1000)
 
     return () => {
@@ -214,8 +254,12 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
             <span>@</span>
             <span className="text-purple-400 font-bold">archlinux</span>
             <span className="text-[#a8ff3e] font-bold">❯</span>
-            <span className="text-white font-semibold">{widgetTypedCommand}</span>
-            {widgetIsTyping && <span className="inline-block w-1.5 h-3 bg-[#a8ff3e] animate-pulse" />}
+            <span className="text-white font-semibold">
+              {widgetTypedCommand}
+            </span>
+            {widgetIsTyping && (
+              <span className="inline-block w-1.5 h-3 bg-[#a8ff3e] animate-pulse" />
+            )}
           </div>
         )}
 
@@ -223,18 +267,46 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
         {terminalWidgetTab === "status" && widgetShowOutput && (
           <div className="space-y-1.5 animate-fade-in text-[10px]">
             <div className="flex items-center gap-1">
-              <span className="text-emerald-500 font-bold animate-pulse">●</span>
-              <span className="font-bold text-white">github-monitor.service</span>
+              <span className="text-emerald-500 font-bold animate-pulse">
+                ●
+              </span>
+              <span className="font-bold text-white">
+                github-monitor.service
+              </span>
               <span className="text-[#6b7280]"> - Live Activity Monitor</span>
             </div>
-            <div className="pl-3">Loaded: <span className="text-emerald-400">loaded</span> (/etc/systemd/system/github-monitor.service; enabled)</div>
-            <div className="pl-3">Active: <span className="text-emerald-400 font-bold">active (running)</span> since today</div>
-            <div className="pl-3">Status: <span className="text-sky-300">"Synced with GitHub PRNG Heatmap"</span></div>
-            
-            <div className="border-t border-zinc-900 my-2 pt-2 text-[9px] text-[#6b7280] uppercase tracking-wider font-bold">Journal Logs:</div>
+            <div className="pl-3">
+              Loaded: <span className="text-emerald-400">loaded</span>{" "}
+              (/etc/systemd/system/github-monitor.service; enabled)
+            </div>
+            <div className="pl-3">
+              Active:{" "}
+              <span className="text-emerald-400 font-bold">
+                active (running)
+              </span>{" "}
+              since today
+            </div>
+            <div className="pl-3">
+              Status:{" "}
+              <span className="text-sky-300">
+                "Synced with GitHub PRNG Heatmap"
+              </span>
+            </div>
+
+            <div className="border-t border-zinc-900 my-2 pt-2 text-[9px] text-[#6b7280] uppercase tracking-wider font-bold">
+              Journal Logs:
+            </div>
             <div className="text-white font-mono leading-relaxed space-y-1 pl-3">
-              <div>[today 10:12:05] <span className="text-emerald-400">⚡ [COMMIT]</span> aim4-mod ❯ Refactored sim timeline model.</div>
-              <div>[today 09:44:54] <span className="text-emerald-400">⚡ [COMMIT]</span> AutoOS ❯ Setup native compilation properties.</div>
+              <div>
+                [today 10:12:05]{" "}
+                <span className="text-emerald-400">⚡ [COMMIT]</span> aim4-mod ❯
+                Refactored sim timeline model.
+              </div>
+              <div>
+                [today 09:44:54]{" "}
+                <span className="text-emerald-400">⚡ [COMMIT]</span> AutoOS ❯
+                Setup native compilation properties.
+              </div>
             </div>
           </div>
         )}
@@ -243,14 +315,24 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
         {terminalWidgetTab === "git" && widgetShowOutput && (
           <div className="space-y-2 animate-fade-in text-[10px]">
             <div>
-              <p className="text-amber-400 font-bold">commit 9fa8b12 (HEAD -{'>'} main)</p>
-              <p className="text-[#6b7280]">Author: Thanatphong Tarin &lt;thanatphong2719@gmail.com&gt;</p>
-              <p className="text-white pl-4 mt-0.5">Refine TypeScript layout elements</p>
+              <p className="text-amber-400 font-bold">
+                commit 9fa8b12 (HEAD -{">"} main)
+              </p>
+              <p className="text-[#6b7280]">
+                Author: Thanatphong Tarin &lt;thanatphong2719@gmail.com&gt;
+              </p>
+              <p className="text-white pl-4 mt-0.5">
+                Refine TypeScript layout elements
+              </p>
             </div>
             <div>
               <p className="text-amber-400">commit c10ab28</p>
-              <p className="text-[#6b7280]">Author: Thanatphong Tarin &lt;thanatphong2719@gmail.com&gt;</p>
-              <p className="text-white pl-4 mt-0.5">Initial port of all CV databases</p>
+              <p className="text-[#6b7280]">
+                Author: Thanatphong Tarin &lt;thanatphong2719@gmail.com&gt;
+              </p>
+              <p className="text-white pl-4 mt-0.5">
+                Initial port of all CV databases
+              </p>
             </div>
           </div>
         )}
@@ -266,15 +348,38 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
 /___(____)\\_\\`}
             </pre>
             <div className="space-y-0.5 text-[#9ca3af]">
-              <div><span className="text-[#a78bfa] font-bold">wintuner</span>@<span className="text-cyan-400 font-bold">archlinux</span></div>
+              <div>
+                <span className="text-[#a78bfa] font-bold">wintuner</span>@
+                <span className="text-cyan-400 font-bold">archlinux</span>
+              </div>
               <div className="text-zinc-700">-----------------</div>
-              <div><span className="text-sky-400">OS</span>: Arch Linux x86_64</div>
-              <div><span className="text-sky-400">Kernel</span>: Linux 6.10-cachyos</div>
-              <div><span className="text-sky-400">Uptime</span>: 99.9%</div>
-              <div><span className="text-sky-400">Shell</span>: zsh 5.9</div>
-              <div><span className="text-sky-400">CPU</span>: Intel Core i9 <span className="text-emerald-400 font-bold ml-1">{cpuLoad}%</span></div>
-              <div><span className="text-sky-400">Memory</span>: {ramUsed}GB / 32GB</div>
-              <div><span className="text-sky-400">Time (ICT)</span>: <span className="text-yellow-400 font-semibold">{localTime}</span></div>
+              <div>
+                <span className="text-sky-400">OS</span>: Arch Linux x86_64
+              </div>
+              <div>
+                <span className="text-sky-400">Kernel</span>: Linux 6.10-cachyos
+              </div>
+              <div>
+                <span className="text-sky-400">Uptime</span>: 99.9%
+              </div>
+              <div>
+                <span className="text-sky-400">Shell</span>: zsh 5.9
+              </div>
+              <div>
+                <span className="text-sky-400">CPU</span>: Intel Core i9{" "}
+                <span className="text-emerald-400 font-bold ml-1">
+                  {cpuLoad}%
+                </span>
+              </div>
+              <div>
+                <span className="text-sky-400">Memory</span>: {ramUsed}GB / 32GB
+              </div>
+              <div>
+                <span className="text-sky-400">Time (ICT)</span>:{" "}
+                <span className="text-yellow-400 font-semibold">
+                  {localTime}
+                </span>
+              </div>
             </div>
           </div>
         )}
@@ -290,7 +395,10 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
                 </div>
               ))}
             </div>
-            <form onSubmit={handleWidgetCliSubmit} className="flex gap-1.5 pt-1.5 border-t border-zinc-900 mt-2">
+            <form
+              onSubmit={handleWidgetCliSubmit}
+              className="flex gap-1.5 pt-1.5 border-t border-zinc-900 mt-2"
+            >
               <span className="text-[#a8ff3e]">❯</span>
               <input
                 type="text"

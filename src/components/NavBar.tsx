@@ -9,13 +9,10 @@ interface NavBarProps {
 interface NavItem {
   id: string
   label: string
-  isTeam?: boolean
 }
 const NAV_ITEMS: NavItem[] = [
-  { id: "about", label: "About" },
-  { id: "achievements", label: "Achievements" },
-  { id: "testimonials", label: "Testimonials" },
-  { id: "team", label: "Our Team", isTeam: true },
+  { id: "home", label: "Home" },
+  { id: "team", label: "Our Team" },
 ]
 
 export default function NavBar({ view, setView }: NavBarProps) {
@@ -51,8 +48,6 @@ export default function NavBar({ view, setView }: NavBarProps) {
     setMobileMenuOpen(false)
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
-
-  const isTeamActive = view === "team" || view.startsWith("portfolio")
 
   return (
     <nav
@@ -172,28 +167,31 @@ export default function NavBar({ view, setView }: NavBarProps) {
         <div className="hidden md:flex items-center gap-1">
           {NAV_ITEMS.map((item) => {
             const isActive =
-              (item.isTeam && isTeamActive) || (!item.isTeam && view === "home")
+              item.id === view ||
+              (item.id === "team" && view.startsWith("portfolio"))
             const baseColor = isActive
               ? "var(--primary)"
               : "var(--muted-foreground)"
             return (
               <button
                 key={item.id}
-                onClick={() =>
-                  item.isTeam ? setView("team") : handleNavClick(item.id)
-                }
+                onClick={() => {
+                  if (item.id === "team") {
+                    setView("team")
+                  } else if (item.id === "home") {
+                    setView("home")
+                  } else {
+                    handleNavClick(item.id)
+                  }
+                }}
                 className="px-4 py-2 text-sm font-medium cursor-pointer transition-colors rounded"
                 style={{ color: baseColor }}
                 onMouseEnter={(e) => {
-                  if (view === "home" || item.isTeam)
-                    (e.currentTarget as HTMLElement).style.color =
-                      "var(--primary)"
+                  ;(e.currentTarget as HTMLElement).style.color =
+                    "var(--primary)"
                 }}
                 onMouseLeave={(e) => {
-                  if (
-                    (view === "home" && !item.isTeam) ||
-                    (item.isTeam && !isTeamActive)
-                  )
+                  if (!isActive)
                     (e.currentTarget as HTMLElement).style.color =
                       "var(--muted-foreground)"
                 }}
@@ -202,23 +200,6 @@ export default function NavBar({ view, setView }: NavBarProps) {
               </button>
             )
           })}
-        </div>
-
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          <button
-            onClick={() => setView("team")}
-            className="px-4 py-2 rounded text-sm font-semibold cursor-pointer transition-all"
-            style={{ background: "var(--primary)", color: "var(--background)" }}
-            onMouseEnter={(e) =>
-              (e.currentTarget.style.background = "var(--primary-hover)")
-            }
-            onMouseLeave={(e) =>
-              (e.currentTarget.style.background = "var(--primary)")
-            }
-          >
-            Meet the Team
-          </button>
         </div>
 
         {/* Mobile Hamburger */}
@@ -265,7 +246,7 @@ export default function NavBar({ view, setView }: NavBarProps) {
           }}
         >
           {NAV_ITEMS.map((item) =>
-            item.isTeam ? (
+            item.id === "team" ? (
               <button
                 key={item.id}
                 onClick={() => {
@@ -274,9 +255,10 @@ export default function NavBar({ view, setView }: NavBarProps) {
                 }}
                 className="text-left text-sm font-medium py-1.5 cursor-pointer"
                 style={{
-                  color: isTeamActive
-                    ? "var(--primary)"
-                    : "var(--muted-foreground)",
+                  color:
+                    view === "team" || view.startsWith("portfolio")
+                      ? "var(--primary)"
+                      : "var(--muted-foreground)",
                 }}
               >
                 {item.label}

@@ -38,14 +38,22 @@ export const HeroPortrait = () => {
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-[#a8ff3e]" />
                 </span>
                 <div className="flex flex-col">
-                  <span className="font-mono text-[8px] uppercase text-[#6b7280]">Status</span>
-                  <span className="font-mono text-[10px] text-[#a8ff3e] font-bold">FORGING</span>
+                  <span className="font-mono text-[8px] uppercase text-[#6b7280]">
+                    Status
+                  </span>
+                  <span className="font-mono text-[10px] text-[#a8ff3e] font-bold">
+                    FORGING
+                  </span>
                 </div>
               </div>
               <div className="h-6 w-px bg-white/10" />
               <div className="flex flex-col items-end">
-                <span className="font-mono text-[8px] uppercase text-[#6b7280]">Uptime</span>
-                <span className="font-mono text-[10px] text-[#9ca3af]">99.9%</span>
+                <span className="font-mono text-[8px] uppercase text-[#6b7280]">
+                  Uptime
+                </span>
+                <span className="font-mono text-[10px] text-[#9ca3af]">
+                  99.9%
+                </span>
               </div>
             </div>
           </div>
@@ -54,7 +62,9 @@ export const HeroPortrait = () => {
           <div className="px-3 py-3 grid grid-cols-2 gap-2 text-[9px] font-mono border-t border-[#1e2230]/40 bg-black/20">
             <div>
               <p className="text-[#6b7280] uppercase">Coordinates</p>
-              <span className="text-white hover:text-[#a8ff3e]">18.8004° N, 98.9507° E</span>
+              <span className="text-white hover:text-[#a8ff3e]">
+                18.8004° N, 98.9507° E
+              </span>
             </div>
             <div className="text-right">
               <p className="text-[#6b7280] uppercase">Kernel</p>

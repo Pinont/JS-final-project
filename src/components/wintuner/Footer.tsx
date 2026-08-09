@@ -9,7 +9,10 @@ interface FooterProps {
 
 export const Footer: FC<FooterProps> = ({ cvLang, setView }) => {
   return (
-    <footer id="connect" className="border-t border-[#1e2230]/40 px-4 sm:px-6 pt-16 pb-8 mt-12 bg-black/20">
+    <footer
+      id="connect"
+      className="border-t border-[#1e2230]/40 px-4 sm:px-6 pt-16 pb-8 mt-12 bg-black/20"
+    >
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Left Column */}
@@ -35,8 +38,12 @@ export const Footer: FC<FooterProps> = ({ cvLang, setView }) => {
                 href="mailto:Thanatphong2719@gmail.com"
                 className="group relative inline-flex items-center justify-center gap-2 rounded-lg border border-[#a8ff3e] bg-[#a8ff3e]/10 px-6 py-3 font-mono text-xs text-[#a8ff3e] hover:bg-[#a8ff3e] hover:text-[#09090e] transition-all"
               >
-                <span>{cvLang === "en" ? "send a signal" : "ส่งสัญญาณหาเรา"}</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+                <span>
+                  {cvLang === "en" ? "send a signal" : "ส่งสัญญาณหาเรา"}
+                </span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1">
+                  →
+                </span>
               </a>
             </div>
           </div>
@@ -48,9 +55,21 @@ export const Footer: FC<FooterProps> = ({ cvLang, setView }) => {
             </p>
             <div className="space-y-2">
               {[
-                { label: "GitHub", handle: "@WinTuner", href: "https://github.com/WinTuner" },
-                { label: "LinkedIn", handle: "/in/thanatphong-tarin", href: "https://www.linkedin.com/in/thanatphong-tarin-1b6619385/" },
-                { label: "Email", handle: "Thanatphong2719@gmail.com", href: "mailto:Thanatphong2719@gmail.com" }
+                {
+                  label: "GitHub",
+                  handle: "@WinTuner",
+                  href: "https://github.com/WinTuner",
+                },
+                {
+                  label: "LinkedIn",
+                  handle: "/in/thanatphong-tarin",
+                  href: "https://www.linkedin.com/in/thanatphong-tarin-1b6619385/",
+                },
+                {
+                  label: "Email",
+                  handle: "Thanatphong2719@gmail.com",
+                  href: "mailto:Thanatphong2719@gmail.com",
+                },
               ].map((item) => (
                 <a
                   key={item.label}
@@ -95,7 +114,12 @@ export const Footer: FC<FooterProps> = ({ cvLang, setView }) => {
             <span>{cvLang === "en" ? "& code" : "และโค้ด"}</span>
           </div>
 
-          <p>© {new Date().getFullYear()} WinTuner — {cvLang === "en" ? "All experiments reserved" : "สงวนลิขสิทธิ์ผลงานทดลองทั้งหมด"}</p>
+          <p>
+            © {new Date().getFullYear()} WinTuner —{" "}
+            {cvLang === "en"
+              ? "All experiments reserved"
+              : "สงวนลิขสิทธิ์ผลงานทดลองทั้งหมด"}
+          </p>
         </div>
       </div>
     </footer>
