@@ -2,6 +2,14 @@ import { useEffect, useRef } from "react"
 
 const CHARS = "░▒▓│─┼+.*·:".split("")
 
+// Type alias for grid cell to avoid inline type semicolon issues
+type GridCell = {
+  char: string
+  alpha: number
+  drift: number
+  speed: number
+}
+
 export default function AsciiBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const theme = "dark" as "dark" | "light"
@@ -13,8 +21,7 @@ export default function AsciiBackground() {
     let raf: number
     let cols = 0,
       rows = 0
-    const grid: { char: string alpha: number drift: number speed: number }[] =
-      []
+    const grid: GridCell[] = []
 
     const resize = () => {
       canvas.width = window.innerWidth

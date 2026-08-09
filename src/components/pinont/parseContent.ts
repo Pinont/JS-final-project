@@ -1,6 +1,42 @@
 import type { Lang } from "./translations"
 import type { Project } from "./projectData"
 
+// Type aliases to avoid inline type semicolon issues
+type SkillGroup = {
+  category: string
+  items: string[]
+}
+
+type StatItem = {
+  value: string
+  labelEN: string
+  labelTH: string
+}
+
+type SocialItem = {
+  label: string
+  url: string
+  handle: string
+  icon: string
+}
+
+type ContactLink = {
+  label: string
+  url: string
+  prefix: string
+  handle: string
+}
+
+// Type alias for work experience item
+type WorkItem = {
+  company: string
+  logo: string
+  roleEN: string
+  roleTH: string
+  periodEN: string
+  periodTH: string
+}
+
 // ---------------------------------------------------------------------------
 // Generic key/value + list parser
 // Format:
@@ -70,10 +106,8 @@ export function parseLists(md: string): Record<string, string[]> {
 //   ## Category Name
 //   skill1, skill2, skill3
 // ---------------------------------------------------------------------------
-export function parseSkills(
-  md: string,
-): { category: string items: string[] }[] {
-  const groups: { category: string items: string[] }[] = []
+export function parseSkills(md: string): SkillGroup[] {
+  const groups: SkillGroup[] = []
   // Only parse the section after ---
   const body = md.split("---").slice(1).join("---")
   const blocks = body.split(/\n(?=## )/).filter(Boolean)
@@ -184,24 +218,8 @@ export function parseProjects(md: string): Project[] {
 //   period_en: Mar 2025 – Apr 2026 · Remote
 //   period_th: มี.ค. 2568 – เม.ย. 2569 · ทางไกล
 // ---------------------------------------------------------------------------
-export function parseWork(
-  md: string,
-): {
-  company: string
-  logo: string
-  roleEN: string
-  roleTH: string
-  periodEN: string
-  periodTH: string
-}[] {
-  const work: {
-    company: string
-    logo: string
-    roleEN: string
-    roleTH: string
-    periodEN: string
-    periodTH: string
-  }[] = []
+export function parseWork(md: string): WorkItem[] {
+  const work: WorkItem[] = []
   const section = md.split("---work")[1]?.split("---")[0] ?? ""
   const blocks = section.split(/\n(?=### )/).filter(Boolean)
   for (const block of blocks) {
@@ -237,10 +255,8 @@ export function parseWork(
 //   label_en: Projects
 //   label_th: โปรเจกต์
 // ---------------------------------------------------------------------------
-export function parseStats(
-  md: string,
-): { value: string labelEN: string labelTH: string }[] {
-  const stats: { value: string labelEN: string labelTH: string }[] = []
+export function parseStats(md: string): StatItem[] {
+  const stats: StatItem[] = []
   const section = md.split("---stats")[1]?.split("---")[0] ?? ""
   const blocks = section.split(/\n(?=### )/).filter(Boolean)
   for (const block of blocks) {
@@ -272,11 +288,8 @@ export function parseStats(
 //   handle: Pinont
 //   icon: ⌥
 // ---------------------------------------------------------------------------
-export function parseSocials(
-  md: string,
-): { label: string url: string handle: string icon: string }[] {
-  const socials: { label: string url: string handle: string icon: string }[] =
-    []
+export function parseSocials(md: string): SocialItem[] {
+  const socials: SocialItem[] = []
   const section = md.split("---socials")[1]?.split("---")[0] ?? ""
   const blocks = section.split(/\n(?=### )/).filter(Boolean)
   for (const block of blocks) {
@@ -311,11 +324,8 @@ export function parseSocials(
 //   prefix: github.com/
 //   handle: Username
 // ---------------------------------------------------------------------------
-export function parseContactLinks(
-  md: string,
-): { label: string url: string prefix: string handle: string }[] {
-  const links: { label: string url: string prefix: string handle: string }[] =
-    []
+export function parseContactLinks(md: string): ContactLink[] {
+  const links: ContactLink[] = []
   const body = md.split("---").slice(1).join("---")
   const blocks = body.split(/\n(?=### )/).filter(Boolean)
 
