@@ -130,3 +130,49 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
 }
+
+/* ─── Brick Loader Animations ─────────────────────────────────────────────── */
+
+@keyframes brick-stack {
+  from {
+    transform: translateY(200px) rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes brick-glitch {
+  0% { transform: translateX(0); opacity: 1; filter: hue-rotate(0deg); }
+  10% { transform: translateX(-4px); filter: hue-rotate(90deg); }
+  20% { transform: translateX(4px); filter: hue-rotate(-90deg); }
+  30% { transform: translateX(-2px); filter: hue-rotate(45deg); }
+  40% { transform: translateX(2px); filter: hue-rotate(-45deg); }
+  50% { transform: translateX(0); filter: hue-rotate(0deg); }
+  60% { opacity: 1; }
+  100% { transform: translateY(-100px) scale(0.5); opacity: 0; filter: blur(8px) hue-rotate(180deg); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Reduced motion fallback */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-blink,
+  .animate-gradient-x,
+  .animate-fade-in-up,
+  [style*="brick-stack"],
+  [style*="brick-glitch"],
+  [style*="fade-in"] {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
