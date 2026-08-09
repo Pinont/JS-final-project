@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { Lock, FileText, ShieldCheck, Bot } from "lucide-react"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -12,22 +12,22 @@ export const COMPANY_STATS = [
 export const EXPERTISE = [
   {
     title: "Secrets Management",
-    icon: "🔐",
+    icon: Lock,
     desc: "One vault for every secret, every environment. Dynamic secrets, auto-rotation, RBAC, and native sync to AWS, GCP, Azure, and Vercel.",
   },
   {
     title: "Certificate Management (PKI)",
-    icon: "📜",
+    icon: FileText,
     desc: "PKI without the pain — automated TLS lifecycle, ACME support, multi-cloud discovery, and CRL/OCSP stapling across your fleet.",
   },
   {
     title: "Privileged Access (PAM)",
-    icon: "🛡️",
+    icon: ShieldCheck,
     desc: "Just-in-time access with approval workflows, full session recording, command-level audit logs, and break-glass emergency access.",
   },
   {
     title: "Agent Proxy & AI Security",
-    icon: "🤖",
+    icon: Bot,
     desc: "Route all agent secret access through an ephemeral proxy. Agents get scoped tokens that expire with the session — no leaked credentials.",
   },
 ]
@@ -102,30 +102,39 @@ export default function AboutSection() {
 
       {/* Expertise */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-        {EXPERTISE.map((item) => (
-          <div
-            key={item.title}
-            className="rounded-xl p-6"
-            style={{
-              background: "var(--muted)",
-              border: "1px solid var(--border)",
-            }}
-          >
-            <div className="text-3xl mb-3">{item.icon}</div>
-            <h4
-              className="font-display font-semibold text-lg mb-2"
-              style={{ color: "var(--foreground)" }}
+        {EXPERTISE.map((item) => {
+          const IconComp = item.icon
+          return (
+            <div
+              key={item.title}
+              className="rounded-xl p-6"
+              style={{
+                background: "var(--muted)",
+                border: "1px solid var(--border)",
+              }}
             >
-              {item.title}
-            </h4>
-            <p
-              className="text-sm leading-relaxed"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              {item.desc}
-            </p>
-          </div>
-        ))}
+              <div className="mb-3" style={{ color: "var(--primary)" }}>
+                {typeof IconComp === "string" ? (
+                  <span className="text-3xl">{IconComp}</span>
+                ) : (
+                  <IconComp className="w-8 h-8" />
+                )}
+              </div>
+              <h4
+                className="font-display font-semibold text-lg mb-2"
+                style={{ color: "var(--foreground)" }}
+              >
+                {item.title}
+              </h4>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--muted-foreground)" }}
+              >
+                {item.desc}
+              </p>
+            </div>
+          )
+        })}
       </div>
 
       {/* Core Values */}
