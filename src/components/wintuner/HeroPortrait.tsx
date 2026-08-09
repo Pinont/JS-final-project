@@ -1,5 +1,3 @@
-import React from "react"
-
 export const HeroPortrait = () => {
   return (
     <div className="relative flex justify-center">
@@ -26,6 +24,7 @@ export const HeroPortrait = () => {
             <img
               src="/thanatphong.png"
               alt="Thanatphong Portrait"
+              decoding="async"
               className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.15)_50%)] bg-[length:100%_4px]" />
