@@ -43,7 +43,7 @@ const TESTIMONIALS = [
   },
 ]
 
-function Stars({ count, color }: { count: number; color: string }) {
+function Stars({ count, color }: { count: number color: string }) {
   return (
     <div className="flex gap-0.5 mb-4">
       {Array.from({ length: count }).map((_, i) => (
@@ -137,9 +137,7 @@ export default function ClientTestimonials() {
                   className="flex items-center gap-3 pt-5"
                   style={{ borderTop: "1px solid #1e2230" }}
                 >
-                  <div
-                    className="w-10 h-10 rounded-full flex items-center justify-center font-mono text-xs font-bold bg-primary text-[var(--primary-foreground)]"
-                  >
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center font-mono text-xs font-bold bg-primary text-[var(--primary-foreground)]">
                     {avatar}
                   </div>
                   <div>
