@@ -187,7 +187,7 @@ export default function NavBar({ view, setView }: NavBarProps) {
                 className="px-4 py-2 text-sm font-medium cursor-pointer transition-colors rounded"
                 style={{ color: baseColor }}
                 onMouseEnter={(e) => {
-                  ;(e.currentTarget as HTMLElement).style.color =
+                  ; (e.currentTarget as HTMLElement).style.color =
                     "var(--primary)"
                 }}
                 onMouseLeave={(e) => {

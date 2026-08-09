@@ -57,15 +57,12 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-24 max-w-7xl mx-auto px-6">
       <div className="text-center mb-16">
-        <div
-          className="font-mono text-xs mb-3"
-          style={{ color: "var(--primary)" }}
-        >
+        <div className="font-mono text-xs mb-3 uppercase tracking-widest text-[var(--primary)] font-semibold">
           ABOUT BRICK
         </div>
         <h2
-          className="font-display font-bold text-4xl md:text-5xl mb-4"
-          style={{ color: "var(--foreground)", letterSpacing: "-0.02em" }}
+          className="font-display font-bold text-3xl sm:text-4xl md:text-5xl mb-4 text-white"
+          style={{ letterSpacing: "-0.02em" }}
         >
           The security infrastructure platform for modern teams
         </h2>
