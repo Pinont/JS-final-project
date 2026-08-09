@@ -2,17 +2,17 @@ import { useState } from "react"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-export const INFISICAL_IMPLEMENTATIONS = [
+export const BRICK_IMPLEMENTATIONS = [
   {
-    title: "Banking Group — Multi-Region Infisical",
+    title: "Banking Group — Multi-Region Brick",
     client: "Major Thai commercial bank",
     scope: "3 regions, 12 clusters, 2,000+ engineers",
-    tech: ["Infisical Cloud", "Kubernetes", "Vault sync", "GitLab CI"],
+    tech: ["Brick Cloud", "Kubernetes", "Vault sync", "GitLab CI"],
     highlights: [
-      "Migrated from HashiCorp Vault to Infisical in 8 weeks",
+      "Migrated from HashiCorp Vault to Brick in 8 weeks",
       "Zero-downtime secret rotation across 500+ services",
       "Unified RBAC across dev/staging/prod with GitOps",
-      "SOC 2 Type II evidence automation via Infisical audit logs",
+      "SOC 2 Type II evidence automation via Brick audit logs",
     ],
   },
   {
@@ -20,7 +20,7 @@ export const INFISICAL_IMPLEMENTATIONS = [
     client: "AI-powered lending platform (Series B)",
     scope: "50+ LLM agents, 10M+ monthly requests",
     tech: [
-      "Infisical Agent Proxy",
+      "Brick Agent Proxy",
       "OpenAI/Anthropic",
       "Kubernetes",
       "Prometheus",
@@ -36,7 +36,7 @@ export const INFISICAL_IMPLEMENTATIONS = [
     title: "E-commerce Platform — PKI Automation",
     client: "Thailand's largest marketplace",
     scope: "1,200+ domains, 99.99% cert renewal success",
-    tech: ["Infisical PKI", "ACME", "Cloudflare", "AWS ALB", "Terraform"],
+    tech: ["Brick PKI", "ACME", "Cloudflare", "AWS ALB", "Terraform"],
     highlights: [
       "Replaced manual cert management (was 40 hrs/month)",
       "Auto-discovery of 200+ expiring certs in first scan",
@@ -48,24 +48,24 @@ export const INFISICAL_IMPLEMENTATIONS = [
 
 export const PROJECT_HIGHLIGHTS = [
   {
-    title: "Infisical Self-Hosted HA Deployment",
+    title: "Brick Self-Hosted HA Deployment",
     category: "Platform Operations",
-    desc: "Production-grade self-hosted Infisical on Kubernetes with PostgreSQL, Redis, and S3 backend.",
+    desc: "Production-grade self-hosted Brick on Kubernetes with PostgreSQL, Redis, and S3 backend.",
     tech: ["Kubernetes", "PostgreSQL", "Redis", "MinIO", "Helm", "ArgoCD"],
     metrics: "99.99% uptime, <5 min RTO, <1 min RPO",
   },
   {
-    title: "Secret Migration: Vault → Infisical",
+    title: "Secret Migration: Vault → Brick",
     category: "Migration",
     desc: "Automated migration of 50,000+ secrets with validation and rollback capability.",
-    tech: ["Python", "Infisical SDK", "HashiCorp Vault API", "GitHub Actions"],
+    tech: ["Python", "Brick SDK", "HashiCorp Vault API", "GitHub Actions"],
     metrics: "Zero secrets leaked, 100% parity verified",
   },
   {
     title: "Agent Proxy Integration for LLM Platform",
     category: "AI Security",
     desc: "Scoped token proxy for 100+ autonomous agents with real-time audit streaming.",
-    tech: ["Infisical Agent Proxy", "FastAPI", "OpenTelemetry", "Grafana"],
+    tech: ["Brick Agent Proxy", "FastAPI", "OpenTelemetry", "Grafana"],
     metrics: "Zero credential leaks, 99.9% token validity rate",
   },
   {
@@ -73,7 +73,7 @@ export const PROJECT_HIGHLIGHTS = [
     category: "Certificate Automation",
     desc: "Full TLS lifecycle automation for 2,000+ certificates across hybrid cloud.",
     tech: [
-      "Infisical PKI",
+      "Brick PKI",
       "ACME",
       "Terraform",
       "cert-manager",
@@ -84,7 +84,7 @@ export const PROJECT_HIGHLIGHTS = [
 ]
 
 export const TECH_STACK = [
-  "Infisical (Cloud / Self-Hosted)",
+  "Brick (Cloud / Self-Hosted)",
   "Kubernetes / Helm / ArgoCD",
   "Terraform / OpenTofu",
   "HashiCorp Vault (migration)",
@@ -104,7 +104,7 @@ export default function AchievementsSection() {
   )
 
   const tabs = [
-    { id: "impl", label: "Infisical Implementations" },
+    { id: "impl", label: "Brick Implementations" },
     { id: "projects", label: "Key Projects" },
     { id: "tech", label: "Tech & Compliance" },
   ] as const
@@ -130,7 +130,7 @@ export default function AchievementsSection() {
               className="text-lg max-w-2xl mx-auto"
               style={{ color: "var(--muted-foreground)" }}
             >
-              Production Infisical deployments across banking, fintech, and
+              Production Brick deployments across banking, fintech, and
               e-commerce — managing billions of secrets and thousands of
               certificates.
             </p>
@@ -161,7 +161,7 @@ export default function AchievementsSection() {
           {/* Implementations Tab */}
           {activeTab === "impl" && (
             <div className="space-y-8">
-              {INFISICAL_IMPLEMENTATIONS.map((project, i) => (
+              {BRICK_IMPLEMENTATIONS.map((project, i) => (
                 <div
                   key={i}
                   className="rounded-2xl overflow-hidden"
@@ -177,7 +177,7 @@ export default function AchievementsSection() {
                           className="font-mono text-xs mb-2"
                           style={{ color: "var(--primary)" }}
                         >
-                          INFISICAL DEPLOYMENT
+                          BRICK DEPLOYMENT
                         </div>
                         <h3
                           className="font-display font-bold text-2xl md:text-3xl mb-2"

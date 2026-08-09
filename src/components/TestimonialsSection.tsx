@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 export const TESTIMONIALS = [
   {
     quote:
-      "Brick migrated our entire secret infrastructure from Vault to Infisical in 8 weeks with zero downtime. Their team understands the platform deeply — from PKI automation to agent proxy — and they transferred that knowledge to our engineers. Best vendor engagement we've had.",
+      "Brick migrated our entire secret infrastructure from Vault to Brick in 8 weeks with zero downtime. Their team understands the platform deeply — from PKI automation to agent proxy — and they transferred that knowledge to our engineers. Best vendor engagement we've had.",
     author: "Somsak Ch.",
     role: "VP Engineering",
     company: "Major Thai Commercial Bank",
@@ -23,7 +23,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      "Certificate management used to be a monthly fire drill — 200+ domains, manual renewals, occasional outages. Brick implemented Infisical PKI with ACME automation and multi-cloud sync. Zero expiries in 18 months. Our ops team reclaimed 40 hours/month.",
+      "Certificate management used to be a monthly fire drill — 200+ domains, manual renewals, occasional outages. Brick implemented Brick PKI with ACME automation and multi-cloud sync. Zero expiries in 18 months. Our ops team reclaimed 40 hours/month.",
     author: "Pawat K.",
     role: "Head of Platform",
     company: "Thailand's Largest Marketplace",
@@ -32,7 +32,7 @@ export const TESTIMONIALS = [
   },
   {
     quote:
-      "We needed JIT privileged access for production databases with full session recording for SOC 2. Brick deployed Infisical PAM with Slack approval workflows and break-glass procedures. Auditor loved the evidence automation. Our engineers actually enjoy the workflow now.",
+      "We needed JIT privileged access for production databases with full session recording for SOC 2. Brick deployed Brick PAM with Slack approval workflows and break-glass procedures. Auditor loved the evidence automation. Our engineers actually enjoy the workflow now.",
     author: "Siriporn T.",
     role: "Security Engineering Lead",
     company: "Fintech Unicorn",
@@ -86,7 +86,7 @@ export default function TestimonialsSection() {
             style={{ color: "var(--muted-foreground)" }}
           >
             Real feedback from engineering and security leaders who trust us
-            with their Infisical deployments.
+            with their Brick deployments.
           </p>
         </div>
 
