@@ -31,7 +31,7 @@ export default function App() {
 
   return (
     <div style={{ background: "var(--background)", minHeight: "100vh" }}>
-      <NavBar view={view} setView={setView} />
+      {view !== "portfolio-frontend" && <NavBar view={view} setView={setView} />}
 
       {showLoader && view === "home" && <BrickLoader />}
 
