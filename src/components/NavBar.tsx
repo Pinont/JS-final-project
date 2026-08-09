@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
-
-type View = "home" | "team" | "portfolio-pm" | "portfolio-frontend" | "portfolio-uxui"
+import type { View } from "../types"
 
 interface NavBarProps {
   view: View
@@ -226,7 +225,9 @@ export default function NavBar({ view, setView }: NavBarProps) {
         <div className="md:hidden flex items-center">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-[var(--muted-foreground)] focus:outline-none p-2 cursor-pointer"
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            className="text-[var(--muted-foreground)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] rounded p-2 cursor-pointer"
           >
             <svg
               width="24"

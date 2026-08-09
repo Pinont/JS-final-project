@@ -1,16 +1,18 @@
-import React from "react"
+import type { FC } from "react"
+import type { View, FrontendView } from "../../types"
+import type { BlogPost } from "./blogData"
 import { GithubIcon, LinkedinIcon } from "./Icons"
 
 interface HeaderProps {
   cvLang: "en" | "th"
   setCvLang: (l: "en" | "th") => void
-  subView: "home" | "resume" | "projects" | "workbench" | "blog" | "terminal"
-  setSubView: (v: "home" | "resume" | "projects" | "workbench" | "blog" | "terminal") => void
-  setSelectedPost: (p: any) => void
-  setView: (v: any) => void
+  subView: FrontendView
+  setSubView: (v: FrontendView) => void
+  setSelectedPost: (p: BlogPost | null) => void
+  setView: (v: View) => void
 }
 
-export const Header: React.FC<HeaderProps> = ({
+export const Header: FC<HeaderProps> = ({
   cvLang,
   setCvLang,
   subView,
@@ -40,22 +42,27 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Desktop Nav Items */}
         <nav className="hidden md:flex items-center gap-1 font-mono text-xs">
-          {[
+          {([
             { id: "home", label: cvLang === "en" ? "Home" : "หน้าแรก" },
             { id: "resume", label: cvLang === "en" ? "Resume" : "เรซูเม่" },
             { id: "projects", label: cvLang === "en" ? "Projects" : "โปรเจกต์" },
-            { id: "workbench", label: cvLang === "en" ? "Workbench" : "เวิร์กเบนช์" },
+            {
+              id: "workbench",
+              label: cvLang === "en" ? "Workbench" : "เวิร์กเบนช์",
+            },
             { id: "blog", label: cvLang === "en" ? "Blog" : "บล็อก" },
             { id: "terminal", label: cvLang === "en" ? "Console" : "คอนโซล" },
-          ].map((item) => (
+          ] as const).map((item) => (
             <button
               key={item.id}
               onClick={() => {
-                setSubView(item.id as any)
+                setSubView(item.id)
                 setSelectedPost(null)
               }}
               className={`relative px-4 py-2 transition-all cursor-pointer ${
-                subView === item.id ? "text-[#a8ff3e] font-bold" : "text-[#6b7280] hover:text-white"
+                subView === item.id
+                  ? "text-[#a8ff3e] font-bold"
+                  : "text-[#6b7280] hover:text-white"
               }`}
             >
               {subView === item.id && (
@@ -73,7 +80,9 @@ export const Header: React.FC<HeaderProps> = ({
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#a8ff3e] opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#a8ff3e]" />
             </span>
-            <span>{cvLang === "th" ? "สถานะ: กำลังพัฒนา" : "status: forging"}</span>
+            <span>
+              {cvLang === "th" ? "สถานะ: กำลังพัฒนา" : "status: forging"}
+            </span>
           </div>
 
           {/* Language Selection */}
@@ -81,7 +90,9 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => setCvLang("en")}
               className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold cursor-pointer ${
-                cvLang === "en" ? "bg-[#a8ff3e] text-[#09090e]" : "text-[#6b7280] hover:text-white"
+                cvLang === "en"
+                  ? "bg-[#a8ff3e] text-[#09090e]"
+                  : "text-[#6b7280] hover:text-white"
               }`}
             >
               EN
@@ -89,7 +100,9 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => setCvLang("th")}
               className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold cursor-pointer ${
-                cvLang === "th" ? "bg-[#a8ff3e] text-[#09090e]" : "text-[#6b7280] hover:text-white"
+                cvLang === "th"
+                  ? "bg-[#a8ff3e] text-[#09090e]"
+                  : "text-[#6b7280] hover:text-white"
               }`}
             >
               TH
@@ -102,6 +115,7 @@ export const Header: React.FC<HeaderProps> = ({
               href="https://github.com/WinTuner"
               target="_blank"
               rel="noreferrer"
+              aria-label="GitHub profile"
               className="w-7 h-7 flex items-center justify-center text-[#6b7280] hover:text-[#a8ff3e] transition-colors border border-[#1e2230] rounded bg-[#0f1117]"
             >
               <GithubIcon />
@@ -110,6 +124,7 @@ export const Header: React.FC<HeaderProps> = ({
               href="https://www.linkedin.com/in/thanatphong-tarin-1b6619385/"
               target="_blank"
               rel="noreferrer"
+              aria-label="LinkedIn profile"
               className="w-7 h-7 flex items-center justify-center text-[#6b7280] hover:text-[#a8ff3e] transition-colors border border-[#1e2230] rounded bg-[#0f1117]"
             >
               <LinkedinIcon />

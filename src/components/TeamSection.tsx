@@ -1,9 +1,10 @@
+import type { View } from "../types"
 import { TEAM_MEMBERS } from "./teamData"
 
 export default function TeamSection({
   setView,
 }: {
-  setView: (v: any) => void
+  setView: (v: View) => void
 }) {
   return (
     <section className="relative min-h-screen pt-28 pb-20 overflow-hidden grid-bg">
@@ -65,9 +66,7 @@ export default function TeamSection({
             <div className="flex flex-col justify-center space-y-3 font-mono text-xs text-[#9ca3af] border-t md:border-t-0 md:border-l border-[#1e2230] pt-4 md:pt-0 md:pl-8">
               <div>
                 <span className="text-[#6b7280]">Project Name:</span>{" "}
-                <span className="text-white">
-                  Brick Security Landing Suite
-                </span>
+                <span className="text-white">Brick Security Landing Suite</span>
               </div>
               <div>
                 <span className="text-[#6b7280]">Tech Stack:</span>{" "}
@@ -246,6 +245,8 @@ export default function TeamSection({
                         <img
                           src="/ProfilePhooriwat.jpg"
                           alt="Phooriwat Suphakkanok"
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.45]"
                           style={{
                             transform: "scale(1.3)",

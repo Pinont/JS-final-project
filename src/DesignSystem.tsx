@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import type { View } from "./types"
 
 // ─── Static Data Arrays ──────────────────────────────────────────────────────
 
@@ -114,7 +115,7 @@ function CodeBlock({ code }: { code: string }) {
 export default function DesignSystem({
   setView,
 }: {
-  setView: (v: any) => void
+  setView: (v: View) => void
 }) {
   const [activeSection, setActiveSection] = useState("intro")
 

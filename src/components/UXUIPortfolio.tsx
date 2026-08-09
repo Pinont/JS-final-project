@@ -1,9 +1,10 @@
 import { useState } from "react"
+import type { View } from "../types"
 
 export default function UXUIPortfolio({
   setView,
 }: {
-  setView: (v: any) => void
+  setView: (v: View) => void
 }) {
   const [theme, setTheme] = useState<"lime" | "purple" | "cyan" | "orange">(
     "cyan",
@@ -86,6 +87,8 @@ export default function UXUIPortfolio({
               <img
                 src="/ProfilePhooriwat.jpg"
                 alt="Phooriwat Suphakkanok"
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover transition-transform"
                 style={{
                   transform: "scale(1.3)",
@@ -191,8 +194,8 @@ export default function UXUIPortfolio({
             Design Token & UI Component Playground
           </h2>
           <p className="text-sm text-[#6b7280] mb-8 max-w-3xl leading-relaxed">
-            Adjust the design tokens in the controller panel below to see how the
-            UI component card adapts color palettes, typography scale,
+            Adjust the design tokens in the controller panel below to see how
+            the UI component card adapts color palettes, typography scale,
             glassmorphism opacity, and glow shadows in real time.
           </p>
 
@@ -287,8 +290,8 @@ export default function UXUIPortfolio({
                               : "15px",
                       }}
                     >
-                      Crafting intuitive design systems, high-fidelity prototypes,
-                      and user-centered digital interfaces.
+                      Crafting intuitive design systems, high-fidelity
+                      prototypes, and user-centered digital interfaces.
                     </p>
                   </div>
                 </div>
@@ -310,9 +313,9 @@ export default function UXUIPortfolio({
                   Theme Color Token
                 </label>
                 <div className="grid grid-cols-2 gap-2">
-                  {(
-                    Object.keys(themeColors) as Array<keyof typeof themeColors>
-                  ).map((t) => (
+                  {(Object.keys(
+                    themeColors,
+                  ) as Array<keyof typeof themeColors>).map((t) => (
                     <button
                       key={t}
                       onClick={() => setTheme(t)}
@@ -364,6 +367,8 @@ export default function UXUIPortfolio({
                 </span>
                 <button
                   onClick={() => setGlowEnabled(!glowEnabled)}
+                  aria-label="Toggle box glow effect"
+                  aria-pressed={glowEnabled}
                   className={`w-12 h-6 rounded-full transition-all cursor-pointer relative p-0.5 ${
                     glowEnabled
                       ? "bg-[#00d4ff]"
@@ -399,8 +404,6 @@ export default function UXUIPortfolio({
             </div>
           </div>
         </div>
-
-
 
         {/* Portfolio Circle Navigation */}
         <div className="flex justify-between items-center mt-16 pt-8 border-t border-[#1e2230]">

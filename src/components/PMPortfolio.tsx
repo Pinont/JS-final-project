@@ -1,9 +1,10 @@
 import { useState } from "react"
+import type { View } from "../types"
 
 export default function PMPortfolio({
   setView,
 }: {
-  setView: (v: any) => void
+  setView: (v: View) => void
 }) {
   const [tasks, setTasks] = useState([
     {

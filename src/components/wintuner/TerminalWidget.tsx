@@ -182,15 +182,17 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
         </div>
 
         <div className="flex items-end h-full gap-0.5 font-mono text-[9px] sm:text-[10px]">
-          {[
+          {([
             { id: "status", label: "status.service" },
             { id: "git", label: "git-log.sh" },
             { id: "neofetch", label: "neofetch" },
             { id: "cli", label: "portfolio-cli.sh" },
-          ].map((tab) => (
+          ] as const).map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setTerminalWidgetTab(tab.id as any)}
+              onClick={() => setTerminalWidgetTab(tab.id)}
+              role="tab"
+              aria-selected={terminalWidgetTab === tab.id}
               className={`px-3 py-1.5 transition-colors border-t border-x rounded-t-md font-semibold cursor-pointer ${
                 terminalWidgetTab === tab.id
                   ? "bg-zinc-900/80 border-zinc-800 text-[#a8ff3e] border-t-[#a8ff3e]"
@@ -295,6 +297,7 @@ export const TerminalWidget: React.FC<TerminalWidgetProps> = ({ cvLang }) => {
                 value={widgetCliInput}
                 onChange={(e) => setWidgetCliInput(e.target.value)}
                 placeholder="type 'help'..."
+                aria-label="Terminal command input"
                 className="bg-transparent border-none focus:outline-none focus:ring-0 text-white font-mono text-[10px] flex-1 p-0"
               />
             </form>
