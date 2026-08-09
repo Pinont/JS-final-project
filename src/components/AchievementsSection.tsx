@@ -141,7 +141,7 @@ export default function AchievementsSection() {
             {tabs.map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id as any)}
+                onClick={() => setActiveTab(tab.id)}
                 className="px-4 py-2 rounded font-mono text-xs font-medium transition-all"
                 style={{
                   background:

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import type { View } from "../types"
 
 const SOCIAL_LINKS = [
   { name: "GitHub", href: "https://github.com", icon: "⌘" },
@@ -34,10 +35,8 @@ const FOOTER_LINKS = [
 // ─── Section: Footer ──────────────────────────────────────────────────────────
 
 interface FooterProps {
-  view: "home" | "team" | "portfolio-pm" | "portfolio-frontend" | "portfolio-uxui"
-  setView: (
-    v: "home" | "team" | "portfolio-pm" | "portfolio-frontend" | "portfolio-uxui",
-  ) => void
+  view: View
+  setView: (v: View) => void
 }
 
 export default function Footer({ view, setView }: FooterProps) {
