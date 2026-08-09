@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react"
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -52,168 +54,137 @@ export const CLIENT_LOGOS = [
   { name: "Government Agency", initials: "GA" },
 ]
 
-// ─── Section: Client Testimonials ────────────────────────────────────────────
+// ─── Section: Client Testimonials & Trusted By ───────────────────────────────
 
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0)
 
   useEffect(() => {
-    const t = setInterval(
-      () => setActive((a) => (a + 1) % TESTIMONIALS.length),
-      5000,
-    )
-    return () => clearInterval(t)
+    const timer = setInterval(() => {
+      setActive((prev) => (prev + 1) % TESTIMONIALS.length)
+    }, 6000)
+    return () => clearInterval(timer)
   }, [])
 
-  return (
-    <section id="testimonials" className="py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16">
-          <div
-            className="font-mono text-xs mb-3"
-            style={{ color: "var(--primary)" }}
-          >
-            CLIENT TESTIMONIALS
-          </div>
-          <h2
-            className="font-display font-bold text-4xl md:text-5xl mb-4"
-            style={{ color: "var(--foreground)", letterSpacing: "-0.02em" }}
-          >
-            What our clients secured
-          </h2>
-          <p
-            className="text-lg max-w-2xl mx-auto"
-            style={{ color: "var(--muted-foreground)" }}
-          >
-            Real feedback from engineering and security leaders who trust us
-            with their Brick deployments.
-          </p>
-        </div>
+  const nextTestimonial = () => {
+    setActive((prev) => (prev + 1) % TESTIMONIALS.length)
+  }
 
-        {/* Testimonial Cards */}
-        <div className="relative h-[480px] md:h-[420px] mb-12">
-          {TESTIMONIALS.map((t, i) => (
-            <div
-              key={i}
-              className="absolute inset-0 transition-all duration-500"
-              style={{
-                opacity: active === i ? 1 : 0,
-                transform: active === i ? "translateY(0)" : "translateY(20px)",
-                pointerEvents: active === i ? "auto" : "none",
-              }}
+  const prevTestimonial = () => {
+    setActive((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)
+  }
+
+  return (
+    <section id="testimonials" className="py-24 max-w-7xl mx-auto px-6 relative">
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16"
+      >
+        <div className="font-mono text-xs mb-3 uppercase tracking-widest text-[var(--primary)] font-semibold">
+          CLIENT TESTIMONIALS
+        </div>
+        <h2
+          className="font-display font-bold text-3xl sm:text-4xl md:text-5xl mb-4 text-white text-balance"
+          style={{ letterSpacing: "-0.02em" }}
+        >
+          What our clients secured
+        </h2>
+        <p
+          className="text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+          style={{ color: "var(--muted-foreground)" }}
+        >
+          Real feedback from engineering and security leaders who trust us with their Brick deployments.
+        </p>
+      </motion.div>
+
+      {/* Main Quote Card Container */}
+      <div className="max-w-4xl mx-auto mb-16 relative">
+        <div className="glass-panel rounded-3xl p-8 sm:p-12 border border-[var(--border)] relative overflow-hidden">
+          <div className="absolute top-6 right-8 text-[var(--primary)] opacity-10 pointer-events-none">
+            <Quote className="w-24 h-24" />
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.4 }}
+              className="relative z-10"
             >
-              <div
-                className="max-w-4xl mx-auto rounded-2xl p-8 md:p-12 text-center"
-                style={{
-                  background: "var(--card)",
-                  border: "1px solid var(--border)",
-                }}
-              >
-                <div className="flex justify-center gap-1 mb-6">
-                  {[...Array(t.rating)].map((_, j) => (
-                    <svg
-                      key={j}
-                      width="20"
-                      height="20"
-                      fill="var(--primary)"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                    </svg>
-                  ))}
+              {/* Rating Stars */}
+              <div className="flex gap-1 mb-6">
+                {[...Array(TESTIMONIALS[active]?.rating || 5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 text-[var(--primary)] fill-[var(--primary)]"
+                  />
+                ))}
+              </div>
+
+              {/* Quote Body */}
+              <blockquote className="font-display text-xl sm:text-2xl text-white font-normal leading-relaxed mb-8">
+                "{TESTIMONIALS[active]?.quote}"
+              </blockquote>
+
+              {/* Author Info */}
+              <div className="flex items-center justify-between border-t border-[var(--border)] pt-6 flex-wrap gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-[rgba(168,255,62,0.1)] border border-[rgba(168,255,62,0.2)] flex items-center justify-center font-mono font-bold text-sm text-[var(--primary)]">
+                    {TESTIMONIALS[active]?.avatar}
+                  </div>
+                  <div>
+                    <div className="font-display font-semibold text-white text-base">
+                      {TESTIMONIALS[active]?.author}
+                    </div>
+                    <div className="font-mono text-xs text-[var(--muted-foreground)]">
+                      {TESTIMONIALS[active]?.role} · {TESTIMONIALS[active]?.company}
+                    </div>
+                  </div>
                 </div>
-                <blockquote
-                  className="text-xl md:text-2xl font-display font-light mb-8 leading-relaxed"
-                  style={{
-                    color: "var(--foreground)",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  "{t.quote}"
-                </blockquote>
-                <div className="flex items-center justify-center gap-3">
-                  <div
-                    className="w-12 h-12 rounded-full flex items-center justify-center font-mono text-sm font-bold"
-                    style={{
-                      background: "var(--primary)",
-                      color: "var(--background)",
-                    }}
+
+                {/* Navigation Buttons */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={prevTestimonial}
+                    className="p-2 rounded-lg bg-[#13151e] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-white hover:border-[var(--primary)] transition-all cursor-pointer"
+                    aria-label="Previous quote"
                   >
-                    {t.avatar}
-                  </div>
-                  <div className="text-left">
-                    <div
-                      className="text-base font-semibold"
-                      style={{ color: "var(--foreground)" }}
-                    >
-                      {t.author}
-                    </div>
-                    <div
-                      className="text-sm font-mono"
-                      style={{ color: "var(--muted-foreground)" }}
-                    >
-                      {t.role} · {t.company}
-                    </div>
-                  </div>
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={nextTestimonial}
+                    className="p-2 rounded-lg bg-[#13151e] border border-[var(--border)] text-[var(--muted-foreground)] hover:text-white hover:border-[var(--primary)] transition-all cursor-pointer"
+                    aria-label="Next quote"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
                 </div>
               </div>
-            </div>
-          ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mb-16">
-          {TESTIMONIALS.map((_, i) => (
+        {/* Carousel Indicator Dots */}
+        <div className="flex justify-center gap-2 mt-6">
+          {TESTIMONIALS.map((_, idx) => (
             <button
-              key={i}
-              onClick={() => setActive(i)}
-              className="w-2 h-2 rounded-full transition-all"
-              style={{
-                background: active === i ? "var(--primary)" : "var(--border)",
-                width: active === i ? "24px" : "8px",
-              }}
+              key={idx}
+              onClick={() => setActive(idx)}
+              className={`h-2 rounded-full transition-all cursor-pointer ${
+                active === idx ? "w-8 bg-[var(--primary)]" : "w-2 bg-[var(--border)] hover:bg-white/40"
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
             />
           ))}
         </div>
-
-        {/* Client Logos */}
-        <div className="pt-8" style={{ borderTop: "1px solid var(--border)" }}>
-          <div
-            className="font-mono text-xs text-center mb-8"
-            style={{ color: "var(--muted-foreground)" }}
-          >
-            TRUSTED BY SECURITY TEAMS AT
-          </div>
-          <div
-            className="flex flex-wrap justify-center gap-8 items-center"
-            style={{ opacity: 0.6 }}
-          >
-            {CLIENT_LOGOS.map((c) => (
-              <div
-                key={c.name}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg"
-                style={{
-                  background: "var(--muted)",
-                  border: "1px solid var(--border)",
-                }}
-              >
-                <span
-                  className="font-mono text-xs"
-                  style={{ color: "var(--muted-foreground)" }}
-                >
-                  {c.initials}
-                </span>
-                <span
-                  className="text-xs"
-                  style={{ color: "var(--muted-foreground)" }}
-                >
-                  {c.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
+
+
     </section>
   )
 }

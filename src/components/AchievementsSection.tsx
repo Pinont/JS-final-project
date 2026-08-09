@@ -99,220 +99,215 @@ export default function AchievementsSection() {
   ] as const
 
   return (
-    <section id="achievements" className="py-24">
-      <div style={{ background: "var(--muted)" }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 pt-12">
-            <div
-              className="font-mono text-xs mb-3"
-              style={{ color: "var(--primary)" }}
-            >
-              ACHIEVEMENTS
-            </div>
-            <h2
-              className="font-display font-bold text-4xl md:text-5xl mb-4"
-              style={{ color: "var(--foreground)", letterSpacing: "-0.02em" }}
-            >
-              What we've secured
-            </h2>
-            <p
-              className="text-lg max-w-2xl mx-auto"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              Production Brick deployments across banking, fintech, and
-              e-commerce — managing billions of secrets and thousands of
-              certificates.
-            </p>
+    <section id="achievements" className="py-24" style={{ background: "var(--background)" }}>
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <div className="font-mono text-xs mb-3 uppercase tracking-widest text-[var(--primary)] font-semibold">
+            ACHIEVEMENTS
           </div>
+          <h2
+            className="font-display font-bold text-3xl sm:text-4xl md:text-5xl mb-4 text-white"
+            style={{ letterSpacing: "-0.02em" }}
+          >
+            What we've secured
+          </h2>
+          <p
+            className="text-lg max-w-2xl mx-auto"
+            style={{ color: "var(--muted-foreground)" }}
+          >
+            Production Brick deployments across banking, fintech, and
+            e-commerce — managing billions of secrets and thousands of
+            certificates.
+          </p>
+        </div>
 
-          {/* Tab Navigation */}
-          <div className="flex flex-wrap gap-2 mb-10 justify-center">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className="px-4 py-2 rounded font-mono text-xs font-medium transition-all"
+        {/* Tab Navigation */}
+        <div className="flex flex-wrap gap-2 mb-10 justify-center">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className="px-4 py-2 rounded font-mono text-xs font-medium transition-all"
+              style={{
+                background:
+                  activeTab === tab.id ? "var(--primary)" : "var(--card)",
+                color:
+                  activeTab === tab.id
+                    ? "var(--background)"
+                    : "var(--muted-foreground)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Implementations Tab */}
+        {activeTab === "impl" && (
+          <div className="space-y-8">
+            {BRICK_IMPLEMENTATIONS.map((project, i) => (
+              <div
+                key={i}
+                className="rounded-2xl overflow-hidden"
                 style={{
-                  background:
-                    activeTab === tab.id ? "var(--primary)" : "var(--card)",
-                  color:
-                    activeTab === tab.id
-                      ? "var(--background)"
-                      : "var(--muted-foreground)",
+                  background: "var(--card)",
                   border: "1px solid var(--border)",
                 }}
               >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Implementations Tab */}
-          {activeTab === "impl" && (
-            <div className="space-y-8">
-              {BRICK_IMPLEMENTATIONS.map((project, i) => (
-                <div
-                  key={i}
-                  className="rounded-2xl overflow-hidden"
-                  style={{
-                    background: "var(--card)",
-                    border: "1px solid var(--border)",
-                  }}
-                >
-                  <div className="p-8 md:p-12">
-                    <div className="grid md:grid-cols-[1.5fr_2fr] gap-8">
-                      <div>
-                        <div
-                          className="font-mono text-xs mb-2"
-                          style={{ color: "var(--primary)" }}
-                        >
-                          BRICK DEPLOYMENT
-                        </div>
-                        <h3
-                          className="font-display font-bold text-2xl md:text-3xl mb-2"
+                <div className="p-8 md:p-12">
+                  <div className="grid md:grid-cols-[1.5fr_2fr] gap-8">
+                    <div>
+                      <div
+                        className="font-mono text-xs mb-2"
+                        style={{ color: "var(--primary)" }}
+                      >
+                        BRICK DEPLOYMENT
+                      </div>
+                      <h3
+                        className="font-display font-bold text-2xl md:text-3xl mb-2"
+                        style={{ color: "var(--foreground)" }}
+                      >
+                        {project.title}
+                      </h3>
+                      <p
+                        className="text-sm mb-4"
+                        style={{ color: "var(--muted-foreground)" }}
+                      >
+                        {project.client}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {project.tech.map((t) => (
+                          <span
+                            key={t}
+                            className="px-2 py-1 rounded text-xs font-mono"
+                            style={{
+                              background: "var(--muted)",
+                              color: "var(--primary)",
+                              border: "1px solid var(--border)",
+                            }}
+                          >
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                      <div
+                        className="text-sm"
+                        style={{ color: "var(--muted-foreground)" }}
+                      >
+                        Scope: {project.scope}
+                      </div>
+                    </div>
+                    <ul className="space-y-3">
+                      {project.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="flex items-start gap-3 text-sm"
                           style={{ color: "var(--foreground)" }}
                         >
-                          {project.title}
-                        </h3>
-                        <p
-                          className="text-sm mb-4"
-                          style={{ color: "var(--muted-foreground)" }}
-                        >
-                          {project.client}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {project.tech.map((t) => (
-                            <span
-                              key={t}
-                              className="px-2 py-1 rounded text-xs font-mono"
-                              style={{
-                                background: "var(--muted)",
-                                color: "var(--primary)",
-                                border: "1px solid var(--border)",
-                              }}
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                        <div
-                          className="text-sm"
-                          style={{ color: "var(--muted-foreground)" }}
-                        >
-                          Scope: {project.scope}
-                        </div>
-                      </div>
-                      <ul className="space-y-3">
-                        {project.highlights.map((h) => (
-                          <li
-                            key={h}
-                            className="flex items-start gap-3 text-sm"
-                            style={{ color: "var(--foreground)" }}
+                          <svg
+                            width="16"
+                            height="16"
+                            fill="none"
+                            stroke="var(--primary)"
+                            strokeWidth="2.5"
+                            viewBox="0 0 24 24"
+                            className="flex-shrink-0 mt-0.5"
                           >
-                            <svg
-                              width="16"
-                              height="16"
-                              fill="none"
-                              stroke="var(--primary)"
-                              strokeWidth="2.5"
-                              viewBox="0 0 24 24"
-                              className="flex-shrink-0 mt-0.5"
-                            >
-                              <polyline points="20,6 9,17 4,12" />
-                            </svg>
-                            {h}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                            <polyline points="20,6 9,17 4,12" />
+                          </svg>
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
+        )}
 
-          {/* Key Projects Tab */}
-          {activeTab === "projects" && (
-            <div className="grid md:grid-cols-2 gap-6">
-              {PROJECT_HIGHLIGHTS.map((p, i) => (
+        {/* Key Projects Tab */}
+        {activeTab === "projects" && (
+          <div className="grid md:grid-cols-2 gap-6">
+            {PROJECT_HIGHLIGHTS.map((p, i) => (
+              <div
+                key={i}
+                className="rounded-xl p-6"
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
+                }}
+              >
                 <div
-                  key={i}
-                  className="rounded-xl p-6"
+                  className="font-mono text-xs mb-2"
+                  style={{ color: "var(--primary)" }}
+                >
+                  {p.category}
+                </div>
+                <h4
+                  className="font-display font-semibold text-lg mb-2"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {p.title}
+                </h4>
+                <p
+                  className="text-sm mb-4 leading-relaxed"
+                  style={{ color: "var(--muted-foreground)" }}
+                >
+                  {p.desc}
+                </p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {p.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-1 rounded text-xs font-mono"
+                      style={{
+                        background: "var(--muted)",
+                        color: "var(--foreground)",
+                        border: "1px solid var(--border)",
+                      }}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <div
+                  className="text-xs font-mono pt-3"
                   style={{
-                    background: "var(--card)",
-                    border: "1px solid var(--border)",
+                    borderTop: "1px solid var(--border)",
+                    color: "var(--primary)",
                   }}
                 >
-                  <div
-                    className="font-mono text-xs mb-2"
-                    style={{ color: "var(--primary)" }}
-                  >
-                    {p.category}
-                  </div>
-                  <h4
-                    className="font-display font-semibold text-lg mb-2"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {p.title}
-                  </h4>
-                  <p
-                    className="text-sm mb-4 leading-relaxed"
-                    style={{ color: "var(--muted-foreground)" }}
-                  >
-                    {p.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {p.tech.map((t) => (
-                      <span
-                        key={t}
-                        className="px-2 py-1 rounded text-xs font-mono"
-                        style={{
-                          background: "var(--muted)",
-                          color: "var(--foreground)",
-                          border: "1px solid var(--border)",
-                        }}
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div
-                    className="text-xs font-mono pt-3"
-                    style={{
-                      borderTop: "1px solid var(--border)",
-                      color: "var(--primary)",
-                    }}
-                  >
-                    {p.metrics}
-                  </div>
+                  {p.metrics}
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
+        )}
 
-          {/* Tech & Compliance Tab */}
-          {activeTab === "tech" && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
-              {TECH_STACK.map((t) => (
-                <div
-                  key={t}
-                  className="rounded-xl p-6"
-                  style={{
-                    background: "var(--card)",
-                    border: "1px solid var(--border)",
-                  }}
+        {/* Tech & Compliance Tab */}
+        {activeTab === "tech" && (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+            {TECH_STACK.map((t) => (
+              <div
+                key={t}
+                className="rounded-xl p-6"
+                style={{
+                  background: "var(--card)",
+                  border: "1px solid var(--border)",
+                }}
+              >
+                <span
+                  className="font-mono text-sm"
+                  style={{ color: "var(--foreground)" }}
                 >
-                  <span
-                    className="font-mono text-sm"
-                    style={{ color: "var(--foreground)" }}
-                  >
-                    {t}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
+                  {t}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )

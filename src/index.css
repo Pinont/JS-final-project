@@ -43,6 +43,7 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+
 *::-webkit-scrollbar {
   display: none;
 }
@@ -66,44 +67,99 @@ body {
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(168, 255, 62, 0.15); }
-  50% { box-shadow: 0 0 40px rgba(168, 255, 62, 0.35); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(168, 255, 62, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(168, 255, 62, 0.35);
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 @keyframes gradient-x {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.animate-marquee { animation: marquee 28s linear infinite; }
-.animate-float { animation: float 4s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
-.animate-blink { animation: blink 1.1s step-end infinite; }
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+.animate-blink {
+  animation: blink 1.1s step-end infinite;
+}
+
 .animate-gradient-x {
   background-size: 200% 200%;
   animation: gradient-x 4s ease infinite;
 }
-.animate-fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
 
 .glow-green {
   text-shadow: 0 0 30px rgba(168, 255, 62, 0.5);
@@ -138,6 +194,7 @@ body {
     transform: translateY(200px) rotateX(90deg);
     opacity: 0;
   }
+
   to {
     transform: translateY(0) rotateX(0);
     opacity: 1;
@@ -145,23 +202,63 @@ body {
 }
 
 @keyframes brick-glitch {
-  0% { transform: translateX(0); opacity: 1; filter: hue-rotate(0deg); }
-  10% { transform: translateX(-4px); filter: hue-rotate(90deg); }
-  20% { transform: translateX(4px); filter: hue-rotate(-90deg); }
-  30% { transform: translateX(-2px); filter: hue-rotate(45deg); }
-  40% { transform: translateX(2px); filter: hue-rotate(-45deg); }
-  50% { transform: translateX(0); filter: hue-rotate(0deg); }
-  60% { opacity: 1; }
-  100% { transform: translateY(-100px) scale(0.5); opacity: 0; filter: blur(8px) hue-rotate(180deg); }
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+    filter: hue-rotate(0deg);
+  }
+
+  10% {
+    transform: translateX(-4px);
+    filter: hue-rotate(90deg);
+  }
+
+  20% {
+    transform: translateX(4px);
+    filter: hue-rotate(-90deg);
+  }
+
+  30% {
+    transform: translateX(-2px);
+    filter: hue-rotate(45deg);
+  }
+
+  40% {
+    transform: translateX(2px);
+    filter: hue-rotate(-45deg);
+  }
+
+  50% {
+    transform: translateX(0);
+    filter: hue-rotate(0deg);
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100px) scale(0.5);
+    opacity: 0;
+    filter: blur(8px) hue-rotate(180deg);
+  }
 }
 
 @keyframes fade-in {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Reduced motion fallback */
 @media (prefers-reduced-motion: reduce) {
+
   .animate-marquee,
   .animate-float,
   .animate-pulse-glow,
@@ -182,13 +279,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 3px,
-    rgba(0, 0, 0, 0.1) 3px,
-    rgba(0, 0, 0, 0.1) 6px
-  );
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.1) 3px,
+      rgba(0, 0, 0, 0.1) 6px);
   pointer-events: none;
   z-index: 40;
 }
@@ -208,12 +303,10 @@ body {
   right: 0;
   top: 0;
   height: 140px;
-  background: linear-gradient(
-    180deg,
-    transparent,
-    rgba(168, 255, 62, 0.04),
-    transparent
-  );
+  background: linear-gradient(180deg,
+      transparent,
+      rgba(168, 255, 62, 0.04),
+      transparent);
   animation: crt-sweep 14s linear infinite;
 }
 
@@ -222,12 +315,15 @@ body {
     transform: translateY(-20%);
     opacity: 0;
   }
+
   6% {
     opacity: 1;
   }
+
   60% {
     opacity: 1;
   }
+
   100% {
     transform: translateY(120%);
     opacity: 0;
@@ -257,4 +353,3 @@ body {
   filter: blur(4px);
   will-change: transform, opacity;
 }
-
