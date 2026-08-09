@@ -1,3 +1,5 @@
+import { Smartphone, ShieldCheck, Monitor } from "lucide-react"
+
 // 1.2 Achievements
 
 const ACHIEVEMENT_STATS = [
@@ -18,19 +20,19 @@ const OTHER_PROJECTS = [
   {
     title: "NeoBank Mobile App",
     desc: "Cross-platform banking app with biometric auth and instant transfers for 1M+ users.",
-    icon: "📱",
+    icon: Smartphone,
     color: "#a8ff3e",
   },
   {
     title: "Cloud Security Console",
     desc: "Zero-trust admin console with JIT access and full session audit replay.",
-    icon: "🛡️",
+    icon: ShieldCheck,
     color: "#ff6b35",
   },
   {
     title: "Logistics Web Portal",
     desc: "Real-time fleet tracking dashboard serving 5,000+ daily dispatchers.",
-    icon: "💻",
+    icon: Monitor,
     color: "#00d4ff",
   },
 ]
@@ -187,7 +189,7 @@ export default function Achievements() {
 
         {/* Other projects */}
         <div className="grid sm:grid-cols-3 gap-4 mb-16">
-          {OTHER_PROJECTS.map(({ title, desc, icon, color }) => (
+          {OTHER_PROJECTS.map(({ title, desc, icon: IconComp, color }) => (
             <div
               key={title}
               className="rounded-xl p-6 transition-all duration-200"
@@ -206,9 +208,10 @@ export default function Achievements() {
                 style={{
                   background: `${color}12`,
                   border: `1px solid ${color}25`,
+                  color: color,
                 }}
               >
-                {icon}
+                <IconComp className="w-5 h-5" />
               </div>
               <div
                 className="font-display font-semibold text-base mb-2"

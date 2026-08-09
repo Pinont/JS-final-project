@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import type { View } from "./types"
+import { Copy, Bot, Check } from "lucide-react"
 
 // ─── Static Data Arrays ──────────────────────────────────────────────────────
 
@@ -129,9 +130,17 @@ function CodeBlock({ code }: { code: string }) {
         </span>
         <button
           onClick={handleCopy}
-          className="text-xs font-mono text-[#9ca3af] hover:text-[#a8ff3e] transition-colors cursor-pointer"
+          className="text-xs font-mono text-[#9ca3af] hover:text-[#a8ff3e] transition-colors cursor-pointer inline-flex items-center gap-1"
         >
-          {copied ? "Copied! ✓" : "Copy 📋"}
+          {copied ? (
+            <>
+              Copied! <Check className="w-3 h-3 text-[#a8ff3e]" />
+            </>
+          ) : (
+            <>
+              Copy <Copy className="w-3 h-3" />
+            </>
+          )}
         </button>
       </div>
       <pre className="p-4 overflow-x-auto font-mono text-xs text-[#9ca3af] whitespace-pre">
@@ -874,7 +883,7 @@ export default function DesignSystem({
                     FLOAT EFFECT (.animate-float)
                   </span>
                   <div className="w-10 h-10 rounded bg-[#ff6b35] flex items-center justify-center text-lg animate-float">
-                    🤖
+                    <Bot className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-xs text-[#6b7280] mt-4">
                     Gentle vertical bobbing

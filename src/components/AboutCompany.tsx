@@ -1,28 +1,29 @@
 import { useState } from "react"
+import { Lock, Zap, Globe, Users, Store, Laptop, Smartphone, ShieldCheck } from "lucide-react"
 
 // 1.1 About Company
 
 const CORE_VALUES = [
   {
-    icon: "🔒",
+    icon: Lock,
     title: "Security First",
     body: "Every line we ship is written with defense-in-depth. Security is not an afterthought — it is the foundation.",
     color: "#a8ff3e",
   },
   {
-    icon: "⚡",
+    icon: Zap,
     title: "Developer Speed",
     body: "We optimize for developer experience. Fast iteration, clean APIs, and tooling that gets out of your way.",
     color: "#00d4ff",
   },
   {
-    icon: "🌐",
+    icon: Globe,
     title: "Open Ecosystem",
     body: "We build on open standards and contribute back. Vendor lock-in has no place in critical infrastructure.",
     color: "#b94fff",
   },
   {
-    icon: "🤝",
+    icon: Users,
     title: "Customer Trust",
     body: "Our customers trust us with their most sensitive data. Security is the foundation of everything we build.",
     color: "#ff6b35",
@@ -33,22 +34,22 @@ const EXPERTISE = [
   {
     label: "POS System Development",
     desc: "Enterprise-grade point-of-sale systems for retail chains and convenience stores",
-    icon: "🏪",
+    icon: Store,
   },
   {
     label: "Web Development",
     desc: "Full-stack web applications built with modern frameworks and best practices",
-    icon: "💻",
+    icon: Laptop,
   },
   {
     label: "Mobile App Development",
     desc: "Native and cross-platform mobile apps for iOS and Android",
-    icon: "📱",
+    icon: Smartphone,
   },
   {
     label: "Cyber Security",
     desc: "Penetration testing, secret management, and zero-trust security architecture",
-    icon: "🛡️",
+    icon: ShieldCheck,
   },
 ]
 
@@ -162,7 +163,7 @@ export default function AboutCompany() {
             CORE EXPERTISE
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {EXPERTISE.map(({ label, desc, icon }) => (
+            {EXPERTISE.map(({ label, desc, icon: IconComp }) => (
               <div
                 key={label}
                 className="rounded-xl p-6 transition-all duration-200 cursor-default"
@@ -178,7 +179,9 @@ export default function AboutCompany() {
                   ;(e.currentTarget as HTMLElement).style.background = "#0f1117"
                 }}
               >
-                <div className="text-2xl mb-3">{icon}</div>
+                <div className="mb-3" style={{ color: "#a8ff3e" }}>
+                  <IconComp className="w-6 h-6" />
+                </div>
                 <div
                   className="font-display font-semibold text-sm mb-2"
                   style={{ color: "#f0f2f5" }}
@@ -205,7 +208,7 @@ export default function AboutCompany() {
             WHAT WE STAND FOR
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {CORE_VALUES.map(({ icon, title, body, color }) => (
+            {CORE_VALUES.map(({ icon: IconComp, title, body, color }) => (
               <div
                 key={title}
                 className="rounded-xl p-6 transition-all duration-200 cursor-default"
@@ -220,7 +223,9 @@ export default function AboutCompany() {
                   ;(e.currentTarget as HTMLElement).style.boxShadow = "none"
                 }}
               >
-                <div className="text-xl mb-3">{icon}</div>
+                <div className="mb-3" style={{ color }}>
+                  <IconComp className="w-6 h-6" />
+                </div>
                 <div
                   className="font-display font-semibold text-sm mb-2"
                   style={{ color }}

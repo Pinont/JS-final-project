@@ -1,3 +1,5 @@
+import { Star } from "lucide-react"
+
 // 1.3 Client Testimonials
 
 const TESTIMONIALS = [
@@ -162,8 +164,9 @@ export default function ClientTestimonials() {
 
         {/* Trust line */}
         <div className="text-center mt-14">
-          <p className="font-mono text-xs" style={{ color: "#374151" }}>
-            ★ 4.9 / 5 average client satisfaction across 200+ delivered projects
+          <p className="font-mono text-xs flex items-center justify-center gap-1.5" style={{ color: "#374151" }}>
+            <Star className="w-3.5 h-3.5 text-[#a8ff3e] fill-[#a8ff3e]" />
+            4.9 / 5 average client satisfaction across 200+ delivered projects
           </p>
         </div>
       </div>
