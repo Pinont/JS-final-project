@@ -38,25 +38,12 @@ const SOCIAL_LINKS = [
 
 const FOOTER_LINKS = [
   {
-    title: "Company",
-    links: ["About", "Achievements", "Testimonials", "Team"],
+    title: "Home",
+    links: ["Brick", "About Brick", "Achievements", "Client Testimonials"],
   },
   {
-    title: "Services",
-    links: [
-      "POS Development",
-      "Web Development",
-      "Mobile Apps",
-      "Cyber Security",
-    ],
-  },
-  {
-    title: "Resources",
-    links: ["Blog", "Case Studies", "Documentation", "Careers"],
-  },
-  {
-    title: "Legal",
-    links: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+    title: "Our Team",
+    links: ["About Us"],
   },
 ]
 
@@ -69,28 +56,50 @@ interface FooterProps {
 
 export default function Footer({ view, setView }: FooterProps) {
   const handleLinkClick = (e: React.MouseEvent, link: string) => {
-    if (link === "Team") {
-      e.preventDefault()
-      setView("team")
-      return
-    }
-    const targetId = link.toLowerCase()
-    if (
-      targetId === "about" ||
-      targetId === "achievements" ||
-      targetId === "testimonials"
-    ) {
-      e.preventDefault()
+    e.preventDefault()
+    const l = link.toLowerCase()
+
+    if (l === "brick") {
       if (view !== "home") {
         setView("home")
         setTimeout(() => {
-          const el = document.getElementById(targetId)
-          if (el) el.scrollIntoView({ behavior: "smooth" })
+          window.scrollTo({ top: 0, behavior: "smooth" })
         }, 100)
-        return
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" })
       }
-      const el = document.getElementById(targetId)
-      if (el) el.scrollIntoView({ behavior: "smooth" })
+      return
+    }
+
+    if (l.includes("about us") || l.includes("team")) {
+      setView("team")
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+
+    let targetId = ""
+    if (l.includes("about brick") || l === "about") {
+      targetId = "about"
+    } else if (l.includes("achievement")) {
+      targetId = "achievements"
+    } else if (l.includes("testim")) {
+      targetId = "testimonials"
+    }
+
+    if (targetId) {
+      const scrollToSection = () => {
+        const el =
+          document.getElementById(targetId) ||
+          document.getElementById(`client-${targetId}`)
+        if (el) el.scrollIntoView({ behavior: "smooth" })
+      }
+
+      if (view !== "home") {
+        setView("home")
+        setTimeout(scrollToSection, 100)
+      } else {
+        scrollToSection()
+      }
     }
   }
 
@@ -103,7 +112,7 @@ export default function Footer({ view, setView }: FooterProps) {
       }}
     >
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-16">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
@@ -203,8 +212,7 @@ export default function Footer({ view, setView }: FooterProps) {
               className="text-sm leading-relaxed mb-6 max-w-sm"
               style={{ color: "var(--muted-foreground)" }}
             >
-              Building digital infrastructure for Thailand's businesses. POS
-              systems, web & mobile apps, cybersecurity — engineered to scale.
+              Security infrastructure for developers and agents.
             </p>
             <div className="flex gap-4">
               {SOCIAL_LINKS.map((s) => {
@@ -223,16 +231,16 @@ export default function Footer({ view, setView }: FooterProps) {
                       color: "var(--muted-foreground)",
                     }}
                     onMouseEnter={(e) => {
-                      ;(e.currentTarget as HTMLElement).style.borderColor =
+                      ; (e.currentTarget as HTMLElement).style.borderColor =
                         "var(--primary)"
-                      ;(e.currentTarget as HTMLElement).style.color =
-                        "var(--primary)"
+                        ; (e.currentTarget as HTMLElement).style.color =
+                          "var(--primary)"
                     }}
                     onMouseLeave={(e) => {
-                      ;(e.currentTarget as HTMLElement).style.borderColor =
+                      ; (e.currentTarget as HTMLElement).style.borderColor =
                         "var(--border)"
-                      ;(e.currentTarget as HTMLElement).style.color =
-                        "var(--muted-foreground)"
+                        ; (e.currentTarget as HTMLElement).style.color =
+                          "var(--muted-foreground)"
                     }}
                   >
                     <IconComp className="w-4 h-4" />
@@ -243,37 +251,39 @@ export default function Footer({ view, setView }: FooterProps) {
           </div>
 
           {/* Link columns */}
-          {FOOTER_LINKS.map(({ title, links }) => (
-            <div key={title}>
-              <h4
-                className="font-mono text-xs font-semibold mb-4"
-                style={{ color: "var(--muted-foreground)" }}
-              >
-                {title}
-              </h4>
-              <ul className="space-y-3">
-                {links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      onClick={(e) => handleLinkClick(e, l)}
-                      className="text-sm transition-colors cursor-pointer"
-                      style={{ color: "var(--muted-foreground)" }}
-                      onMouseEnter={(e) =>
-                        (e.currentTarget.style.color = "var(--primary)")
-                      }
-                      onMouseLeave={(e) =>
+          <div className="md:col-span-2 flex flex-wrap justify-start md:justify-end gap-16 md:gap-24">
+            {FOOTER_LINKS.map(({ title, links }) => (
+              <div key={title}>
+                <h4
+                  className="font-mono text-xs font-semibold mb-4"
+                  style={{ color: "var(--muted-foreground)" }}
+                >
+                  {title}
+                </h4>
+                <ul className="space-y-3">
+                  {links.map((l) => (
+                    <li key={l}>
+                      <a
+                        href="#"
+                        onClick={(e) => handleLinkClick(e, l)}
+                        className="text-sm transition-colors cursor-pointer whitespace-nowrap"
+                        style={{ color: "var(--muted-foreground)" }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.color = "var(--primary)")
+                        }
+                        onMouseLeave={(e) =>
                         (e.currentTarget.style.color =
                           "var(--muted-foreground)")
-                      }
-                    >
-                      {l}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                        }
+                      >
+                        {l}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div
