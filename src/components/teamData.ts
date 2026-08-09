@@ -1,5 +1,5 @@
 export interface TeamMember {
-  id: string
+  id: "pm" | "frontend" | "uxui"
   nameTh: string
   nameEn: string
   role: string

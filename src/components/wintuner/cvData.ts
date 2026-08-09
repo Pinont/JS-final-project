@@ -132,7 +132,7 @@ export const education = {
 	],
 } satisfies EducationMap;
 
-export const professionalExperience = {
+export const professionalExperience: ProfessionalExperienceMap = {
 	en: {
 		production: [
 			{
@@ -294,7 +294,7 @@ export const professionalExperience = {
 			},
 		],
 	},
-} satisfies ProfessionalExperienceMap;
+};
 
 export const selfDevelopment = {
 	en: {

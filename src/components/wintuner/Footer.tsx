@@ -1,12 +1,13 @@
-import React from "react"
+import type { FC } from "react"
+import type { View } from "../../types"
 import { GithubIcon, LinkedinIcon, HeartIcon } from "./Icons"
 
 interface FooterProps {
   cvLang: "en" | "th"
-  setView: (v: any) => void
+  setView: (v: View) => void
 }
 
-export const Footer: React.FC<FooterProps> = ({ cvLang, setView }) => {
+export const Footer: FC<FooterProps> = ({ cvLang, setView }) => {
   return (
     <footer id="connect" className="border-t border-[#1e2230]/40 px-4 sm:px-6 pt-16 pb-8 mt-12 bg-black/20">
       <div className="mx-auto max-w-7xl">
